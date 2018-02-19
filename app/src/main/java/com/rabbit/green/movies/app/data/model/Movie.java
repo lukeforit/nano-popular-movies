@@ -1,50 +1,141 @@
 package com.rabbit.green.movies.app.data.model;
 
+import com.squareup.moshi.Json;
+
 public class Movie {
-    public static final String EXTRAS_MOVIE_ID     = "com.green.rabbit.movies.ID";
-    public static final String EXTRAS_MOVIE_POSTER = "com.green.rabbit.movies.POSTER";
 
-    private long mId;
-    private String mTitle;
-    private String mReleaseDate;
-    private String mPlot;
-    private double mVoteAvg;
-    private String mPoster;
+    @Json(name = "vote_count")
+    private int voteCount;
+    private int id;
+    private boolean video;
+    @Json(name = "vote_average")
+    private float voteAverage;
+    private String title;
+    private float popularity;
+    @Json(name = "poster_path")
+    private String posterPath;
+    @Json(name = "original_language")
+    private String originalLanguage;
+    @Json(name = "original_title")
+    private String originalTitle;
+    @Json(name = "genre_ids")
+    private int[] genreIds;
+    @Json(name = "backdrop_path")
+    private String backdropPath;
+    private boolean adult;
+    private String overview;
+    @Json(name = "release_date")
+    private String releaseDate;
 
-    public Movie(long mId, String mTitle, String mReleaseDate, String mPlot, double mVoteAvg, String mPoster) {
-        this.mId = mId;
-        this.mTitle = mTitle;
-        this.mReleaseDate = mReleaseDate;
-        this.mPlot = mPlot;
-        this.mVoteAvg = mVoteAvg;
-        this.mPoster = mPoster;
-    }
-    public Movie(long mId, String mPoster) {
-        this.mId = mId;
-        this.mPoster = mPoster;
-    }
-
-    public long getmId() {
-        return mId;
-    }
-
-    public String getmTitle() {
-        return mTitle;
+    public int getVoteCount() {
+        return voteCount;
     }
 
-    public String getmReleaseDate() {
-        return mReleaseDate;
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
     }
 
-    public String getmPlot() {
-        return mPlot;
+    public int getId() {
+        return id;
     }
 
-    public double getmVoteAvg() {
-        return mVoteAvg;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getmPoster() {
-        return mPoster;
+    public boolean isVideo() {
+        return video;
+    }
+
+    public void setVideo(boolean video) {
+        this.video = video;
+    }
+
+    public float getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(float voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public float getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(float popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
+    }
+
+    public String getOriginalTitle() {
+        return originalTitle;
+    }
+
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
+    }
+
+    public int[] getGenreIds() {
+        return genreIds;
+    }
+
+    public void setGenreIds(int[] genreIds) {
+        this.genreIds = genreIds;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+
+    public boolean isAdult() {
+        return adult;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }
