@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".movies.browse.MoviesBrowserActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sortby_popularity"
+        android:title="@string/action_sortby_popularity"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sortby_date"
+        android:title="@string/action_sort_bydate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sortby_vote_average"
+        android:title="@string/action_sortby_vote_average"
+        app:showAsAction="ifRoom" />
+
+</menu>
