@@ -1,6 +1,10 @@
 package com.rabbit.green.movies.app.data.repo;
 
-public class MoviesRetrofitRepository {
+import com.rabbit.green.movies.app.data.model.Movie;
+
+import java.util.List;
+
+public class MoviesRetrofitRepository implements IMoviesRepository {
     private static final String BASE_URL = "http://api.themoviedb.org/3/";
     private static final String DISCOVER = "discover/movie";
     private static final String MOVIE = "movie";
@@ -31,5 +35,15 @@ public class MoviesRetrofitRepository {
     }
     public static String posterPath(String relativePath, String size){
         return POSTER_BASEURL + size + relativePath;
+    }
+
+    @Override
+    public List<Movie> getTopRatedMovies(int page) {
+        return null;
+    }
+
+    @Override
+    public List<Movie> getPopularMovies(int page) {
+        return null;
     }
 }
