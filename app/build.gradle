@@ -33,22 +33,35 @@ dependencies {
         rxJava = '2.1.6'
         rxAndroid = '2.0.1'
         rxRetrofitAdapter = '1.0.0'
+        dagger = '2.14.1'
     }
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation "com.android.support:appcompat-v7:$supportLib"
     implementation "com.android.support:support-v4:$supportLib"
     implementation "com.android.support:support-annotations:$supportLib"
     implementation "com.android.support:design:$supportLib"
     implementation "com.android.support:recyclerview-v7:$supportLib"
+
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
+
     implementation "io.reactivex.rxjava2:rxjava:$rxJava"
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid"
     implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rxRetrofitAdapter"
+
     implementation "com.squareup.moshi:moshi:$moshi"
+
+    implementation "com.google.dagger:dagger-android:$dagger"
+    implementation "com.google.dagger:dagger-android-support:$dagger"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger"
+
+    implementation "com.google.dagger:dagger:$dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger"
 
     testImplementation "org.mockito:mockito-core:$mockitoUnit"
     testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpClient"
