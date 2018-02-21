@@ -1,5 +1,16 @@
 apply plugin: 'com.android.application'
 
+static def getPropertyByKey(String name) {
+    def propertiesFile = new File('local.properties')
+    if (propertiesFile.exists()) {
+        def properties = new Properties()
+        properties.load(new FileInputStream(propertiesFile))
+        return "\"" + properties.getProperty(name, "aaa") + "\""
+    } else {
+        throw new MissingResourceException()
+    }
+}
+
 android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
@@ -19,6 +30,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildTypes.each {
+        it.buildConfigField("String", "API_KEY", getPropertyByKey("api_key"))
     }
 }
 
