@@ -5,9 +5,15 @@ static def getPropertyByKey(String name) {
     if (propertiesFile.exists()) {
         def properties = new Properties()
         properties.load(new FileInputStream(propertiesFile))
-        return "\"" + properties.getProperty(name, "aaa") + "\""
+        def result = properties.getProperty(name)
+        if (result == null) {
+            throw new MissingResourceException("Property " + name +
+                    " does not exist. See README for details")
+        } else {
+            return "\"" + properties.getProperty(name) + "\""
+        }
     } else {
-        throw new MissingResourceException()
+        throw new MissingResourceException("File local.properties does not exist")
     }
 }
 
