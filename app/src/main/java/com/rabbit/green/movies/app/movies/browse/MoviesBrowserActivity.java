@@ -8,15 +8,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.rabbit.green.movies.app.R;
+import com.rabbit.green.movies.app.databinding.ActivityMoviesBrowserBinding;
 import com.rabbit.green.movies.app.movies.BaseActivity;
 import com.rabbit.green.movies.app.movies.details.MovieDetailsActivity;
 
-public class MoviesBrowserActivity extends BaseActivity {
+public class MoviesBrowserActivity
+        extends BaseActivity<MoviesBrowserPresenter, ActivityMoviesBrowserBinding> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,6 +29,11 @@ public class MoviesBrowserActivity extends BaseActivity {
                 startActivity(new Intent(getApplicationContext(), MovieDetailsActivity.class));
             }
         });
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_movies_browser;
     }
 
 }

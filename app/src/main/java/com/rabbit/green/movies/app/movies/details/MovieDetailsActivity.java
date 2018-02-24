@@ -7,15 +7,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.rabbit.green.movies.app.R;
+import com.rabbit.green.movies.app.databinding.ActivityMovieDetailsBinding;
 import com.rabbit.green.movies.app.movies.BaseActivity;
 
-public class MovieDetailsActivity extends BaseActivity {
+public class MovieDetailsActivity
+        extends BaseActivity<MovieDetailsPresenter, ActivityMovieDetailsBinding> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,6 +28,11 @@ public class MovieDetailsActivity extends BaseActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_movie_details;
     }
 
 }
