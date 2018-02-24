@@ -8,4 +8,9 @@ public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> 
     @Inject
     MovieDetailsPresenter() {
     }
+
+    @Override
+    public void setup() {
+
+    }
 }

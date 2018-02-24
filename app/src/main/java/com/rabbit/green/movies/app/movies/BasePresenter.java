@@ -1,16 +1,22 @@
 package com.rabbit.green.movies.app.movies;
 
+import com.rabbit.green.movies.app.data.repo.IMoviesRepository;
+
 import javax.inject.Inject;
 
-public class BasePresenter<VM> {
+public abstract class BasePresenter<VM> {
     @Inject
-    protected VM viewModel;
+    VM viewModel;
+    @Inject
+    protected IMoviesRepository repository;
 
-    public VM getViewModel() {
+    VM getViewModel() {
         return viewModel;
     }
 
     public void setViewModel(VM viewModel) {
         this.viewModel = viewModel;
     }
+
+    public abstract void setup();
 }
