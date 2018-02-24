@@ -1,8 +1,15 @@
 package com.rabbit.green.movies.app.data.repo;
 
-import com.rabbit.green.movies.app.data.model.Movie;
+import android.support.annotation.Nullable;
 
+import com.rabbit.green.movies.app.data.model.Movie;
+import com.rabbit.green.movies.app.data.model.MoviesResponse;
+
+import java.io.IOException;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class MoviesRetrofitRepository implements IMoviesRepository {
     private static final String BASE_URL = "http://api.themoviedb.org/3/";
@@ -28,7 +35,13 @@ public class MoviesRetrofitRepository implements IMoviesRepository {
     public static final String POSTER_SIZE_W500 = "w500/";
     public static final String POSTER_SIZE_W780 = "w780/";
 
-    private String key;
+    private String apiKey;
+    private IMoviesRestService restService;
+
+    public MoviesRetrofitRepository(IMoviesRestService restService, String apiKey) {
+        this.restService = restService;
+        this.apiKey = apiKey;
+    }
 
     public static String posterPath(String relativePath){
         return POSTER_BASEURL + POSTER_SIZE_W342 + relativePath;
@@ -39,11 +52,23 @@ public class MoviesRetrofitRepository implements IMoviesRepository {
 
     @Override
     public List<Movie> getTopRatedMovies(int page) {
-        return null;
+        return unwrapRetrofitCallMoviesResponse(restService.movieTopRated(apiKey, page));
     }
 
     @Override
     public List<Movie> getPopularMovies(int page) {
+        return unwrapRetrofitCallMoviesResponse(restService.moviePopular(apiKey, page));
+    }
+
+    @Nullable
+    private List<Movie> unwrapRetrofitCallMoviesResponse(Call<MoviesResponse> call) {
+        try {
+            Response<MoviesResponse> response = call.execute();
+            MoviesResponse body = response.body();
+            return response.isSuccessful() && body != null ? body.getResults() : null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

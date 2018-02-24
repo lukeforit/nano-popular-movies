@@ -1,0 +1,49 @@
+{
+  "page": 1,
+  "total_results": 12345,
+  "total_pages": 100,
+  "results": [
+    {
+      "vote_count": 9999,
+      "id": 999999,
+      "video": false,
+      "vote_average": 9,
+      "title": "Fake Movie",
+      "popularity": 123.123,
+      "poster_path": "/fake_path.jpg",
+      "original_language": "en",
+      "original_title": "Original Movie",
+      "genre_ids": [
+        12,
+        3232,
+        123,
+        32
+      ],
+      "backdrop_path": "/fake_path.jpg",
+      "adult": false,
+      "overview": "Fake overview",
+      "release_date": "2014-03-11"
+    },
+    {
+      "vote_count": 12312,
+      "id": 123123,
+      "video": false,
+      "vote_average": 9,
+      "title": "Fake Movie 2",
+      "popularity": 123.123,
+      "poster_path": "/fake_path.jpg",
+      "original_language": "en",
+      "original_title": "Original Movie 2",
+      "genre_ids": [
+        12,
+        3232,
+        123,
+        32
+      ],
+      "backdrop_path": "/fake_path.jpg",
+      "adult": false,
+      "overview": "Fake overview",
+      "release_date": "2018-03-11"
+    }
+  ]
+}
