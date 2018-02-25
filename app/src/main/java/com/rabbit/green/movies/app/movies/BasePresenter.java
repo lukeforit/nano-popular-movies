@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 public abstract class BasePresenter<VM> {
     @Inject
-    VM viewModel;
+    protected VM viewModel;
     @Inject
     protected IMoviesRepository repository;
 

@@ -30,6 +30,7 @@ public abstract class BaseActivity<
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         bind();
+        presenter.setup();
     }
 
     @LayoutRes

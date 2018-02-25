@@ -11,12 +11,14 @@ import com.rabbit.green.movies.app.data.model.Movie;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder> {
 
     private List<Movie> data;
 
-    public MoviesAdapter(List<Movie> data) {
-        this.data = data;
+    @Inject
+    public MoviesAdapter() {
     }
 
     @Override
@@ -33,6 +35,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder> {
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return data == null ? 0 : data.size();
+    }
+
+    public void setData(List<Movie> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 }

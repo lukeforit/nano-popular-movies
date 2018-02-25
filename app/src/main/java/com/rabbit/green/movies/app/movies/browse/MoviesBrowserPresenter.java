@@ -15,7 +15,7 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
             new UseCase<List<Movie>, MoviesRequest>() {
                 @Override
                 public void onSuccess(List<Movie> movies) {
-
+                    viewModel.addMovies(movies);
                 }
 
                 @Override
