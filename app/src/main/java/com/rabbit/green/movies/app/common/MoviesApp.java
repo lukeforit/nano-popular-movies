@@ -19,7 +19,9 @@ public class MoviesApp extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
-        DaggerAppComponent.create().inject(this);
+        DaggerAppComponent.builder()
+                .appModule(this).build()
+                .inject(this);
     }
 
     @Override

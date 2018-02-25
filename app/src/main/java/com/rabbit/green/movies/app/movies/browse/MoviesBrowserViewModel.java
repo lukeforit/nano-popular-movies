@@ -2,6 +2,7 @@ package com.rabbit.green.movies.app.movies.browse;
 
 import android.support.v7.widget.GridLayoutManager;
 
+import com.rabbit.green.movies.app.common.ContextUtils;
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.movies.browse.grid.MoviesAdapter;
 
@@ -15,7 +16,7 @@ public class MoviesBrowserViewModel {
     MoviesAdapter adapter;
 
     @Inject
-    MoviesBrowserActivity activity;
+    ContextUtils contextUtils;
 
     @Inject
     MoviesBrowserViewModel() {
@@ -34,6 +35,6 @@ public class MoviesBrowserViewModel {
     }
 
     public GridLayoutManager getLayoutManager() {
-        return new GridLayoutManager(activity.getApplicationContext(), 2);
+        return new GridLayoutManager(contextUtils.getContext(), 2);
     }
 }
