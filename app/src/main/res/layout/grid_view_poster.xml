@@ -9,9 +9,12 @@
     </data>
 
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/poster_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_x_small"
         bind:url="@{vm.imageUrl}"
+        tools:src="@drawable/ic_update_black_24dp"
         />
 </layout>
