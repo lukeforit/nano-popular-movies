@@ -23,7 +23,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder> {
     ContextUtils contextUtils;
 
     @Inject
-    public MoviesAdapter() {
+    MoviesAdapter() {
     }
 
     @Override

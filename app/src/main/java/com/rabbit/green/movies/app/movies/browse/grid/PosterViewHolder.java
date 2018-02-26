@@ -7,7 +7,7 @@ import com.rabbit.green.movies.app.BR;
 
 public class PosterViewHolder extends RecyclerView.ViewHolder {
 
-    private PosterViewModel viewModel;
+    private final PosterViewModel viewModel;
 
     public PosterViewHolder(ViewDataBinding binding) {
         super(binding.getRoot());

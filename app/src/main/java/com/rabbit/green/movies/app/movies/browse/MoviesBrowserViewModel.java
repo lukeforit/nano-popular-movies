@@ -31,7 +31,7 @@ public class MoviesBrowserViewModel {
         this.adapter = adapter;
     }
 
-    public void addMovies(List<Movie> movies) {
+    void addMovies(List<Movie> movies) {
         adapter.setData(movies);
     }
 

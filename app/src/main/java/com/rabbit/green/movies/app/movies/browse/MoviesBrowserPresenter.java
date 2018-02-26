@@ -11,7 +11,7 @@ import javax.inject.Inject;
 
 public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel> {
 
-    private UseCase<List<Movie>, MoviesRequest> browseMoviesUc =
+    private final UseCase<List<Movie>, MoviesRequest> browseMoviesUc =
             new UseCase<List<Movie>, MoviesRequest>() {
                 @Override
                 public void onSuccess(List<Movie> movies) {

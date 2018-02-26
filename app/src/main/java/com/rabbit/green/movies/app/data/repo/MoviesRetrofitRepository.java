@@ -29,25 +29,12 @@ public class MoviesRetrofitRepository implements IMoviesRepository {
     private static final String JSON_OVERVIEW = "overview";
     private static final String JSON_RELEASE_DATE = "release_date";
 
-    private static final String POSTER_BASEURL = "http://image.tmdb.org/t/p/";
-    public static final String POSTER_SIZE_W185 = "w185/";
-    public static final String POSTER_SIZE_W342 = "w342/";
-    public static final String POSTER_SIZE_W500 = "w500/";
-    public static final String POSTER_SIZE_W780 = "w780/";
-
-    private String apiKey;
-    private IMoviesRestService restService;
+    private final String apiKey;
+    private final IMoviesRestService restService;
 
     public MoviesRetrofitRepository(IMoviesRestService restService, String apiKey) {
         this.restService = restService;
         this.apiKey = apiKey;
-    }
-
-    public static String posterPath(String relativePath){
-        return POSTER_BASEURL + POSTER_SIZE_W342 + relativePath;
-    }
-    public static String posterPath(String relativePath, String size){
-        return POSTER_BASEURL + size + relativePath;
     }
 
     @Override

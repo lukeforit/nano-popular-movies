@@ -20,10 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            app:layoutManager="@{vm.layoutManager}"
             app:adapter="@{vm.adapter}"
-            tools:listitem="@layout/grid_view_poster"
-            />
+            app:layoutManager="@{vm.layoutManager}"
+            tools:listitem="@layout/grid_view_poster" />
 
     </FrameLayout>
 </layout>

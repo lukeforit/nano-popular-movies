@@ -145,7 +145,7 @@ public class Movie {
      * Returns full URL for the poster resource based on the
      *
      * @param baseUrl - base poster URL
-     * @param baseUrl - image size identifier
+     * @param imageSize - image size identifier
      * @return Valid URL resource for the poster
      */
     public String getFullPosterPath(String baseUrl, String imageSize) {

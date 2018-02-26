@@ -20,9 +20,9 @@ public abstract class BaseActivity<
         B extends ViewDataBinding> extends AppCompatActivity {
 
     @Inject
-    protected P presenter;
+    P presenter;
 
-    protected B binding;
+    B binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public abstract class BaseActivity<
     @LayoutRes
     protected abstract int getLayoutId();
 
-    protected void bind() {
+    private void bind() {
         binding.setVariable(BR.vm, presenter.getViewModel());
     }
 }

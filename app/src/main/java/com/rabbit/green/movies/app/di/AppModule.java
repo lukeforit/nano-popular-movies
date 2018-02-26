@@ -11,17 +11,17 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module(includes = ApiModule.class)
-public class AppModule {
+class AppModule {
 
     @Provides
     @Singleton
-    public Context provideAppContext(MoviesApp app) {
+    Context provideAppContext(MoviesApp app) {
         return app.getApplicationContext();
     }
 
     @Provides
     @Singleton
-    public ContextUtils provideContextUtils(Context context) {
+    ContextUtils provideContextUtils(Context context) {
         return new ContextUtils(context);
     }
 }

@@ -1,16 +1,10 @@
 package com.rabbit.green.movies.app.movies.browse;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.rabbit.green.movies.app.R;
 import com.rabbit.green.movies.app.databinding.ActivityMoviesBrowserBinding;
 import com.rabbit.green.movies.app.movies.BaseActivity;
-import com.rabbit.green.movies.app.movies.details.MovieDetailsActivity;
 
 public class MoviesBrowserActivity
         extends BaseActivity<MoviesBrowserPresenter, ActivityMoviesBrowserBinding> {
