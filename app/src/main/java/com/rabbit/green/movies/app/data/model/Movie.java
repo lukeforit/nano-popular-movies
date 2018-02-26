@@ -1,5 +1,7 @@
 package com.rabbit.green.movies.app.data.model;
 
+import android.text.TextUtils;
+
 import com.squareup.moshi.Json;
 
 public class Movie {
@@ -137,5 +139,16 @@ public class Movie {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    /**
+     * Returns full URL for the poster resource based on the
+     *
+     * @param baseUrl - base poster URL
+     * @param baseUrl - image size identifier
+     * @return Valid URL resource for the poster
+     */
+    public String getFullPosterPath(String baseUrl, String imageSize) {
+        return TextUtils.concat(baseUrl, imageSize, posterPath).toString();
     }
 }

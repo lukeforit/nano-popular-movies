@@ -41,6 +41,7 @@ android {
     buildTypes.each {
         it.buildConfigField("String", "API_KEY", getPropertyByKey("api_key"))
         it.buildConfigField("String", "BASE_URL", "\"http://api.themoviedb.org/\"")
+        it.buildConfigField("String", "BASE_POSTER_URL", "\"http://image.tmdb.org/t/p/\"")
     }
 }
 
