@@ -1,6 +1,7 @@
 package com.rabbit.green.movies.app.common;
 
 import android.content.Context;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.StringRes;
 
 public class ContextUtils {
@@ -16,5 +17,9 @@ public class ContextUtils {
 
     public String getString(@StringRes int stringId) {
         return context.getString(stringId);
+    }
+
+    public int getInteger(@IntegerRes int intId) {
+        return context.getResources().getInteger(intId);
     }
 }

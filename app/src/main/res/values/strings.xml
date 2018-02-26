@@ -8,6 +8,6 @@
     <string name="action_share">Share</string>
     <string name="action_sortby_vote_average">Sort by vote average</string>
 
-    <!-- TODO handle different sizes: 185, 342, 500, 780 -->
+    <!-- TODO handle different sizes: 92, 154, 185, 342, 500, 780 -->
     <string name="poster_size_w185" translatable="false">w342</string>
 </resources>
