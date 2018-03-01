@@ -10,4 +10,5 @@
 
     <!-- TODO handle different sizes: 92, 154, 185, 342, 500, 780 -->
     <string name="poster_size_w185" translatable="false">w342</string>
+    <string name="poster_size_w500" translatable="false">w500</string>
 </resources>

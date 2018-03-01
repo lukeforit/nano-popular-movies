@@ -15,5 +15,5 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/size_x_small"
         bind:url="@{vm.imageUrl}"
-        tools:src="@drawable/ic_update_black_24dp" />
+        tools:src="@drawable/ic_update_black" />
 </layout>

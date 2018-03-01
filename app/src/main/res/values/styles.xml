@@ -17,4 +17,20 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="TextView"/>
+    <style name="TextView.Medium">
+        <item name="android:textSize">@dimen/font_size_medium</item>
+    </style>
+    <style name="TextView.Medium.Italic">
+        <item name="android:textStyle">italic</item>
+    </style>
+    <style name="TextView.Large">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+    </style>
+    <style name="TextView.Huge">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_huge</item>
+    </style>
+
 </resources>

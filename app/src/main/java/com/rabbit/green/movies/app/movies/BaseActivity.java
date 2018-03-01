@@ -20,7 +20,7 @@ public abstract class BaseActivity<
         B extends ViewDataBinding> extends AppCompatActivity {
 
     @Inject
-    P presenter;
+    protected P presenter;
 
     B binding;
 

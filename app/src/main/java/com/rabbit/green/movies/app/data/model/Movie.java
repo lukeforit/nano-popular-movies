@@ -6,7 +6,7 @@ import com.squareup.moshi.Json;
 
 import org.parceler.Parcel;
 
-@Parcel
+@Parcel(Parcel.Serialization.BEAN)
 public class Movie {
 
     @Json(name = "vote_count")
