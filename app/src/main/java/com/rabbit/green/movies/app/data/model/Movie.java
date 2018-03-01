@@ -4,6 +4,9 @@ import android.text.TextUtils;
 
 import com.squareup.moshi.Json;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Movie {
 
     @Json(name = "vote_count")

@@ -15,7 +15,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder> {
+public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
+        implements OnViewHolderClickListener {
 
     private List<Movie> data;
 
@@ -30,7 +31,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder> {
     public PosterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 R.layout.grid_view_poster, parent, false);
-        return new PosterViewHolder(binding);
+        return new PosterViewHolder(binding, this);
     }
 
     @Override
@@ -47,5 +48,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder> {
     public void setData(List<Movie> data) {
         this.data = data;
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void onViewHolderClick(int position) {
+        contextUtils.navigateToMovieDetails(data.get(position));
     }
 }

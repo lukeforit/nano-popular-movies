@@ -9,6 +9,8 @@ import com.rabbit.green.movies.app.movies.BaseActivity;
 public class MovieDetailsActivity
         extends BaseActivity<MovieDetailsPresenter, ActivityMovieDetailsBinding> {
 
+    public static final String BUNDLE_KEY_MOVIE = "BUNDLE_KEY_MOVIE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
