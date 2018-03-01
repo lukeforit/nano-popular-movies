@@ -10,66 +10,73 @@
             type="com.rabbit.green.movies.app.movies.details.MovieDetailsViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".movies.details.MovieDetailsActivity">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/large_poster_iv"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/size_x_small"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_tv"
-            bind:url="@{vm.imageUrl}"
-            tools:src="@drawable/ic_update_black" />
+            tools:context=".movies.details.MovieDetailsActivity">
 
-        <TextView
-            android:id="@+id/title_tv"
-            style="@style/TextView.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.title}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.389"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Very interesting movie" />
+            <ImageView
+                android:id="@+id/large_poster_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_x_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:url="@{vm.imageUrl}"
+                tools:src="@drawable/ic_update_black" />
 
-        <TextView
-            android:id="@+id/date_tv"
-            style="@style/TextView.Medium.Italic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.releaseDate}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/large_poster_iv"
-            app:layout_constraintTop_toBottomOf="@+id/title_tv"
-            tools:text="16/10/2018" />
+            <TextView
+                android:id="@+id/title_tv"
+                style="@style/TextView.Large"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_x_small"
+                android:gravity="center"
+                android:text="@{vm.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/large_poster_iv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_default="wrap"
+                tools:text="Very interesting movie" />
 
-        <TextView
-            android:id="@+id/votes_tv"
-            style="@style/TextView.Huge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.votes}"
-            app:layout_constraintBottom_toBottomOf="@+id/large_poster_iv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/large_poster_iv"
-            app:layout_constraintTop_toBottomOf="@+id/date_tv"
-            tools:text="9.56" />
+            <TextView
+                android:id="@+id/date_tv"
+                style="@style/TextView.Medium.Italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.releaseDate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/large_poster_iv"
+                app:layout_constraintTop_toBottomOf="@+id/title_tv"
+                tools:text="16/10/2018" />
 
-        <TextView
-            android:id="@+id/plot_tv"
-            style="@style/TextView.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/size_x_small"
-            android:text="@{vm.plot}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/large_poster_iv"
-            tools:text="Very interesting plot of the very interesting movie." />
+            <TextView
+                android:id="@+id/votes_tv"
+                style="@style/TextView.Huge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.votes}"
+                app:layout_constraintBottom_toBottomOf="@+id/large_poster_iv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/large_poster_iv"
+                app:layout_constraintTop_toBottomOf="@+id/date_tv"
+                tools:text="9.56" />
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/plot_tv"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_x_small"
+                android:text="@{vm.plot}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/large_poster_iv"
+                tools:text="Very interesting plot of the very interesting movie." />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </layout>
