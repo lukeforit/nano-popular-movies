@@ -38,12 +38,23 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                     }
                 }
             };
-    private Parcelable parcelToSave;
+
+    private OnThresholdReachedListener onThresholdReachedListener = new OnThresholdReachedListener() {
+        @Override
+        public void onBottomReached() {
+            ucParameters.incrementPage();
+            loadData();
+        }
+    };
 
     //TODO save presenter state in activity
     @Inject
     MoviesBrowserPresenter() {
         ucParameters = new MoviesRequest();
+    }
+
+    public void setup() {
+        viewModel.setOnThresholdReachedListener(onThresholdReachedListener);
     }
 
     public void loadData() {

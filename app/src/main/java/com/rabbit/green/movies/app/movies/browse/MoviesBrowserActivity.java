@@ -21,6 +21,7 @@ public class MoviesBrowserActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter.setup();
         if (savedInstanceState != null) {
             Parcelable parcelable = savedInstanceState.getParcelable(BUNDLE_KEY_PARAMS);
             if (parcelable != null) {

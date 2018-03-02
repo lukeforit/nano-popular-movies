@@ -22,6 +22,7 @@
             android:layout_gravity="center"
             app:adapter="@{vm.adapter}"
             app:layoutManager="@{vm.layoutManager}"
+            app:onScrollListener="@{vm.onScrollListener}"
             tools:listitem="@layout/grid_view_poster" />
 
     </FrameLayout>

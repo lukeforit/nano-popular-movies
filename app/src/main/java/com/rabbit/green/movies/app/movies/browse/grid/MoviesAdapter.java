@@ -45,8 +45,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
         return data == null ? 0 : data.size();
     }
 
-    public void setData(List<Movie> data) {
-        this.data = data;
+    public void addData(List<Movie> data) {
+        if (this.data == null) {
+            this.data = data;
+        } else {
+            this.data.addAll(data);
+        }
         notifyDataSetChanged();
     }
 

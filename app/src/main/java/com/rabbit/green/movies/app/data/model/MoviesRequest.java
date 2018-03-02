@@ -38,4 +38,8 @@ public class MoviesRequest {
     public void resetPage() {
         page = DEFAULT_PAGE;
     }
+
+    public void incrementPage() {
+        ++page;
+    }
 }
