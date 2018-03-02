@@ -10,10 +10,6 @@ public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> 
     MovieDetailsPresenter() {
     }
 
-    @Override
-    public void setup() {
-    }
-
     public void loadData(Movie movie) {
         viewModel.setMovie(movie);
     }

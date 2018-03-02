@@ -1,25 +1,44 @@
 package com.rabbit.green.movies.app.movies.browse;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.rabbit.green.movies.app.R;
+import com.rabbit.green.movies.app.data.model.MoviesRequest;
 import com.rabbit.green.movies.app.databinding.ActivityMoviesBrowserBinding;
 import com.rabbit.green.movies.app.movies.BaseActivity;
+
+import org.parceler.Parcels;
 
 public class MoviesBrowserActivity
         extends BaseActivity<MoviesBrowserPresenter, ActivityMoviesBrowserBinding> {
 
+    private static final String BUNDLE_KEY_PARAMS = "BUNDLE_KEY_PARAMS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            Parcelable parcelable = savedInstanceState.getParcelable(BUNDLE_KEY_PARAMS);
+            if (parcelable != null) {
+                presenter.restoreData(Parcels.<MoviesRequest>unwrap(parcelable));
+            }
+        }
+        presenter.loadData();
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_movies_browser;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable(BUNDLE_KEY_PARAMS, presenter.getParcelToSave());
+        super.onSaveInstanceState(outState);
     }
 
     @Override

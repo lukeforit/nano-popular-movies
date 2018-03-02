@@ -1,5 +1,8 @@
 package com.rabbit.green.movies.app.data.model;
 
+import org.parceler.Parcel;
+
+@Parcel(Parcel.Serialization.BEAN)
 public class MoviesRequest {
     private int page;
     private boolean sortByPopularity;

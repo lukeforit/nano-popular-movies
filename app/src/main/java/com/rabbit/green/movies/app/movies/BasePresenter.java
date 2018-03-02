@@ -17,6 +17,4 @@ public abstract class BasePresenter<VM> {
     public void setViewModel(VM viewModel) {
         this.viewModel = viewModel;
     }
-
-    public abstract void setup();
 }

@@ -1,14 +1,17 @@
 package com.rabbit.green.movies.app.movies.browse;
 
+import android.os.Parcelable;
+
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.data.model.MoviesRequest;
 import com.rabbit.green.movies.app.movies.BasePresenter;
 import com.rabbit.green.movies.app.movies.UseCase;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel> {
 
@@ -35,6 +38,7 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                     }
                 }
             };
+    private Parcelable parcelToSave;
 
     //TODO save presenter state in activity
     @Inject
@@ -42,8 +46,7 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
         ucParameters = new MoviesRequest();
     }
 
-    @Override
-    public void setup() {
+    public void loadData() {
         browseMoviesUc.execute(ucParameters);
     }
 
@@ -52,5 +55,13 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
         ucParameters.resetPage();
         browseMoviesUc.execute(ucParameters);
         return ucParameters.isSortByPopularity();
+    }
+
+    public Parcelable getParcelToSave() {
+        return Parcels.wrap(ucParameters);
+    }
+
+    public void restoreData(MoviesRequest data) {
+        ucParameters = data;
     }
 }
