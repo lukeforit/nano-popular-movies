@@ -73,5 +73,7 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
 
     public void restoreData(MoviesRequest data) {
         ucParameters = data;
+        //TODO fine more elegant way to keep current scroll position
+        ucParameters.resetPage();
     }
 }
