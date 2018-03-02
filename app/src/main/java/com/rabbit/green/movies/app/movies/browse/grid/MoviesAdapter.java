@@ -59,4 +59,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
     public void onViewHolderClick(int position) {
         contextUtils.navigateToMovieDetails(data.get(position));
     }
+
+    public void clear() {
+        data.clear();
+    }
 }

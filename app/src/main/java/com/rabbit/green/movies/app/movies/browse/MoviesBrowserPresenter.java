@@ -64,6 +64,7 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
     }
 
     void sortOrderChanged(boolean byPopularity) {
+        viewModel.reset();
         ucParameters.setSortByPopularity(byPopularity);
         ucParameters.resetPage();
         browseMoviesUc.execute(ucParameters);

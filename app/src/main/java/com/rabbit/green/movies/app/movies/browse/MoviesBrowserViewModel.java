@@ -77,4 +77,8 @@ public class MoviesBrowserViewModel {
     void setOnThresholdReachedListener(OnThresholdReachedListener onThresholdReachedListener) {
         this.onThresholdReachedListener = onThresholdReachedListener;
     }
+
+    void reset() {
+        adapter.clear();
+    }
 }
