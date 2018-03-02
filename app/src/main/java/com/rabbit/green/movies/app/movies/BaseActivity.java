@@ -10,7 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
-import .BR;
+import com.rabbit.green.movies.app.BR;
+
 import dagger.android.AndroidInjection;
 
 @SuppressLint("Registered")

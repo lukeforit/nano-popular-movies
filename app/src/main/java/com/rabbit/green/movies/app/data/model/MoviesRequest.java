@@ -35,10 +35,6 @@ public class MoviesRequest {
         this.sortByPopularity = sortByPopularity;
     }
 
-    public void reverseSort() {
-        sortByPopularity = !sortByPopularity;
-    }
-
     public void resetPage() {
         page = DEFAULT_PAGE;
     }

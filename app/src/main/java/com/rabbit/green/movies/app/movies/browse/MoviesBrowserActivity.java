@@ -51,14 +51,11 @@ public class MoviesBrowserActivity
     //TODO figure out better way to handle menu in this architecture
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_sort) {
-            if (presenter.sortOrderChanged()) {
-                item.setTitle(R.string.action_sort_popularity);
-                item.setIcon(R.drawable.ic_trending_up_white);
-            } else {
-                item.setTitle(R.string.action_sort_top_rated);
-                item.setIcon(R.drawable.ic_star_white);
-            }
+        if (item.getItemId() == R.id.action_sort_popularity) {
+            presenter.sortOrderChanged(true);
+            return true;
+        } else if (item.getItemId() == R.id.action_sort_top_rated) {
+            presenter.sortOrderChanged(false);
             return true;
         } else {
             return super.onOptionsItemSelected(item);

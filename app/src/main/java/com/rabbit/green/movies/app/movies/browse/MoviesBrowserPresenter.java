@@ -50,11 +50,10 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
         browseMoviesUc.execute(ucParameters);
     }
 
-    public boolean sortOrderChanged() {
-        ucParameters.reverseSort();
+    public void sortOrderChanged(boolean byPopularity) {
+        ucParameters.setSortByPopularity(byPopularity);
         ucParameters.resetPage();
         browseMoviesUc.execute(ucParameters);
-        return ucParameters.isSortByPopularity();
     }
 
     public Parcelable getParcelToSave() {
