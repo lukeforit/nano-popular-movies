@@ -8,8 +8,11 @@ import com.rabbit.green.movies.app.movies.UseCase;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel> {
+
+    private MoviesRequest ucParameters;
 
     private final UseCase<List<Movie>, MoviesRequest> browseMoviesUc =
             new UseCase<List<Movie>, MoviesRequest>() {
@@ -25,16 +28,29 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
 
                 @Override
                 public List<Movie> call() throws Exception {
-                    return repository.getPopularMovies(parameters.getPage());
+                    if (ucParameters.isSortByPopularity()) {
+                        return repository.getPopularMovies(parameters.getPage());
+                    } else {
+                        return repository.getTopRatedMovies(parameters.getPage());
+                    }
                 }
             };
 
+    //TODO save presenter state in activity
     @Inject
     MoviesBrowserPresenter() {
+        ucParameters = new MoviesRequest();
     }
 
     @Override
     public void setup() {
-        browseMoviesUc.execute(new MoviesRequest(1));
+        browseMoviesUc.execute(ucParameters);
+    }
+
+    public boolean sortOrderChanged() {
+        ucParameters.reverseSort();
+        ucParameters.resetPage();
+        browseMoviesUc.execute(ucParameters);
+        return ucParameters.isSortByPopularity();
     }
 }
