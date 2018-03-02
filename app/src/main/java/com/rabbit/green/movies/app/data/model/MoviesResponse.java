@@ -4,6 +4,7 @@ import com.squareup.moshi.Json;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class MoviesResponse {
     private int page;
     @Json(name = "total_results")

@@ -13,6 +13,7 @@ import dagger.android.HasActivityInjector;
 
 public class MoviesApp extends Application implements HasActivityInjector {
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
 

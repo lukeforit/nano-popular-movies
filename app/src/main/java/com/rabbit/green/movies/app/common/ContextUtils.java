@@ -25,7 +25,7 @@ public class ContextUtils {
         return context.getString(stringId);
     }
 
-    public int getInteger(@IntegerRes int intId) {
+    public int getInteger(@SuppressWarnings("SameParameterValue") @IntegerRes int intId) {
         return context.getResources().getInteger(intId);
     }
 

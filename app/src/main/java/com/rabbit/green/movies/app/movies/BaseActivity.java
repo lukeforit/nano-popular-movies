@@ -22,7 +22,7 @@ public abstract class BaseActivity<
     @Inject
     protected P presenter;
 
-    B binding;
+    private B binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

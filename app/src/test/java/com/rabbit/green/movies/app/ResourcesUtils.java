@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 class ResourcesUtils {
+    @SuppressWarnings("SameParameterValue")
     static String jsonFileToString(String name) throws IOException {
         ClassLoader loader = ClassLoader.getSystemClassLoader();
         File file = new File(loader.getResource(name).getFile());

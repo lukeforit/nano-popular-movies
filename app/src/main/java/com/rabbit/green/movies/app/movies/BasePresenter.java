@@ -13,8 +13,4 @@ public abstract class BasePresenter<VM> {
     VM getViewModel() {
         return viewModel;
     }
-
-    public void setViewModel(VM viewModel) {
-        this.viewModel = viewModel;
-    }
 }

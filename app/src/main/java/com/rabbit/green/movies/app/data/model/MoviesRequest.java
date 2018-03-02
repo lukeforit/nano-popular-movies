@@ -2,19 +2,21 @@ package com.rabbit.green.movies.app.data.model;
 
 import org.parceler.Parcel;
 
+@SuppressWarnings("WeakerAccess")
 @Parcel(Parcel.Serialization.BEAN)
 public class MoviesRequest {
     private int page;
     private boolean sortByPopularity;
 
-    public static final int DEFAULT_PAGE = 1;
-    public static final boolean DEFAULT_SORT = true;
+    private static final int DEFAULT_PAGE = 1;
+    private static final boolean DEFAULT_SORT = true;
 
     public MoviesRequest() {
         this(DEFAULT_PAGE, DEFAULT_SORT);
     }
 
-    public MoviesRequest(int page, boolean sortByPopularity) {
+    @SuppressWarnings("SameParameterValue")
+    private MoviesRequest(int page, boolean sortByPopularity) {
         this.page = page;
         this.sortByPopularity = sortByPopularity;
     }

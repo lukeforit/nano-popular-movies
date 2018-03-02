@@ -1,5 +1,5 @@
 package com.rabbit.green.movies.app.movies.browse;
 
-public interface OnThresholdReachedListener {
+interface OnThresholdReachedListener {
     void onBottomReached();
 }

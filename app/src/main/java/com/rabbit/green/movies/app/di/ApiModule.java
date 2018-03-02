@@ -13,15 +13,18 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
+@SuppressWarnings("WeakerAccess")
 @Module
 public class ApiModule {
 
+    @SuppressWarnings("SameReturnValue")
     @Provides
     @Named("apiKey")
     public String provideApiKey() {
         return BuildConfig.API_KEY;
     }
 
+    @SuppressWarnings("SameReturnValue")
     @Provides
     @Named("baseUrl")
     public String provideBaseUrl() {
@@ -43,6 +46,7 @@ public class ApiModule {
         return retrofit.create(IMoviesRestService.class);
     }
 
+    @SuppressWarnings("SameParameterValue")
     @Provides
     @Singleton
     public IMoviesRepository provideMoviesRepository(IMoviesRestService restService,

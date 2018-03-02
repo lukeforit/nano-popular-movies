@@ -5,12 +5,13 @@ import com.rabbit.green.movies.app.movies.BasePresenter;
 
 import javax.inject.Inject;
 
+@SuppressWarnings("WeakerAccess")
 public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> {
     @Inject
     MovieDetailsPresenter() {
     }
 
-    public void loadData(Movie movie) {
+    void loadData(Movie movie) {
         viewModel.setMovie(movie);
     }
 }

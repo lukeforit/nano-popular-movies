@@ -7,6 +7,7 @@ import com.rabbit.green.movies.app.movies.details.MovieDetailsActivity;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
+@SuppressWarnings({"unused", "WeakerAccess"})
 @Module
 public abstract class ActivityContributorModule {
     @ContributesAndroidInjector(modules = MoviesBrowserModule.class)

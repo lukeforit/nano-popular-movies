@@ -20,6 +20,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
 
     private List<Movie> data;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     ContextUtils contextUtils;
 

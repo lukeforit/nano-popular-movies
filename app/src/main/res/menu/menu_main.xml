@@ -14,5 +14,5 @@
         android:orderInCategory="101"
         android:title="@string/action_sort_top_rated"
         app:showAsAction="withText" />
-<!-- TODO customize action bar because always|withText doesn't work with apcompat -->
+<!-- TODO customize action bar because always|withText doesn't work with appcompat -->
 </menu>

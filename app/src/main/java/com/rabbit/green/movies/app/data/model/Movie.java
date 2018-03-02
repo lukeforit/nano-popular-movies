@@ -6,6 +6,7 @@ import com.squareup.moshi.Json;
 
 import org.parceler.Parcel;
 
+@SuppressWarnings("WeakerAccess")
 @Parcel(Parcel.Serialization.BEAN)
 public class Movie {
 
@@ -151,6 +152,7 @@ public class Movie {
      * @param imageSize - image size identifier
      * @return Valid URL resource for the poster
      */
+    @SuppressWarnings("SameParameterValue")
     public String getFullPosterPath(String baseUrl, String imageSize) {
         return TextUtils.concat(baseUrl, imageSize, posterPath).toString();
     }

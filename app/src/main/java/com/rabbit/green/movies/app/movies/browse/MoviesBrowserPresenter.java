@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+@SuppressWarnings("WeakerAccess")
 public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel> {
 
     private MoviesRequest ucParameters;
@@ -39,13 +40,14 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                 }
             };
 
-    private OnThresholdReachedListener onThresholdReachedListener = new OnThresholdReachedListener() {
-        @Override
-        public void onBottomReached() {
-            ucParameters.incrementPage();
-            loadData();
-        }
-    };
+    private final OnThresholdReachedListener onThresholdReachedListener =
+            new OnThresholdReachedListener() {
+                @Override
+                public void onBottomReached() {
+                    ucParameters.incrementPage();
+                    loadData();
+                }
+            };
 
     //TODO save presenter state in activity
     @Inject
@@ -53,25 +55,25 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
         ucParameters = new MoviesRequest();
     }
 
-    public void setup() {
+    void setup() {
         viewModel.setOnThresholdReachedListener(onThresholdReachedListener);
     }
 
-    public void loadData() {
+    void loadData() {
         browseMoviesUc.execute(ucParameters);
     }
 
-    public void sortOrderChanged(boolean byPopularity) {
+    void sortOrderChanged(boolean byPopularity) {
         ucParameters.setSortByPopularity(byPopularity);
         ucParameters.resetPage();
         browseMoviesUc.execute(ucParameters);
     }
 
-    public Parcelable getParcelToSave() {
+    Parcelable getParcelToSave() {
         return Parcels.wrap(ucParameters);
     }
 
-    public void restoreData(MoviesRequest data) {
+    void restoreData(MoviesRequest data) {
         ucParameters = data;
         //TODO fine more elegant way to keep current scroll position
         ucParameters.resetPage();

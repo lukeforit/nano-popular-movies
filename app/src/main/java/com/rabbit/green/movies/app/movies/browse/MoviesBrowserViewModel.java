@@ -14,36 +14,40 @@ import javax.inject.Inject;
 
 public class MoviesBrowserViewModel {
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     MoviesAdapter adapter;
 
     @Inject
     ContextUtils contextUtils;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     GridLayoutManager gridLayoutManager;
 
     private OnThresholdReachedListener onThresholdReachedListener;
 
-    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-        }
-
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            if (dy > 0) {
-                int last = gridLayoutManager.findLastCompletelyVisibleItemPosition();
-                int total = gridLayoutManager.getItemCount();
-                int columns = gridLayoutManager.getSpanCount();
-                if (total <= last + columns) {
-                    onThresholdReachedListener.onBottomReached();
+    private final RecyclerView.OnScrollListener onScrollListener =
+            new RecyclerView.OnScrollListener() {
+                @SuppressWarnings("EmptyMethod")
+                @Override
+                public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                    super.onScrollStateChanged(recyclerView, newState);
                 }
-            }
-        }
-    };
+
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                    if (dy > 0) {
+                        int last = gridLayoutManager.findLastCompletelyVisibleItemPosition();
+                        int total = gridLayoutManager.getItemCount();
+                        int columns = gridLayoutManager.getSpanCount();
+                        if (total <= last + columns) {
+                            onThresholdReachedListener.onBottomReached();
+                        }
+                    }
+                }
+            };
 
     @Inject
     MoviesBrowserViewModel() {
@@ -51,10 +55,6 @@ public class MoviesBrowserViewModel {
 
     public MoviesAdapter getAdapter() {
         return adapter;
-    }
-
-    public void setAdapter(MoviesAdapter adapter) {
-        this.adapter = adapter;
     }
 
     void addMovies(List<Movie> movies) {
@@ -69,12 +69,12 @@ public class MoviesBrowserViewModel {
         return onScrollListener;
     }
 
-    @BindingAdapter("bind:onScrollListener")
+    @BindingAdapter("onScrollListener")
     public static void setOnScrollListener(RecyclerView rv, RecyclerView.OnScrollListener listener) {
         rv.addOnScrollListener(listener);
     }
 
-    public void setOnThresholdReachedListener(OnThresholdReachedListener onThresholdReachedListener) {
+    void setOnThresholdReachedListener(OnThresholdReachedListener onThresholdReachedListener) {
         this.onThresholdReachedListener = onThresholdReachedListener;
     }
 }

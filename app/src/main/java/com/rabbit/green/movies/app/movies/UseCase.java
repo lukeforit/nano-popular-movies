@@ -33,6 +33,7 @@ public abstract class UseCase<RESPONSE, REQUEST>
         onError();
     }
 
+    @SuppressWarnings("EmptyMethod")
     public abstract void onError();
 
     @Override

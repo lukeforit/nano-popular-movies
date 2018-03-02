@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 public class MovieDetailsViewModel extends BaseObservable {
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     ContextUtils contextUtils;
 
