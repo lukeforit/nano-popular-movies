@@ -25,5 +25,13 @@
             app:onScrollListener="@{vm.onScrollListener}"
             tools:listitem="@layout/grid_view_poster" />
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_margin="@dimen/size_x_small"
+            android:indeterminateBehavior="repeat"
+            android:visibility="@{vm.progressBarVisibility}"/>
+
     </FrameLayout>
 </layout>

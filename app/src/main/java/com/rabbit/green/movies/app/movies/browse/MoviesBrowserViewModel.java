@@ -1,9 +1,13 @@
 package com.rabbit.green.movies.app.movies.browse;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.rabbit.green.movies.app.BR;
 import com.rabbit.green.movies.app.common.ContextUtils;
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.movies.browse.grid.MoviesAdapter;
@@ -12,7 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class MoviesBrowserViewModel {
+public class MoviesBrowserViewModel extends BaseObservable {
 
     @SuppressWarnings("WeakerAccess")
     @Inject
@@ -24,6 +28,8 @@ public class MoviesBrowserViewModel {
     @SuppressWarnings("WeakerAccess")
     @Inject
     GridLayoutManager gridLayoutManager;
+
+    private boolean loadingData;
 
     private OnThresholdReachedListener onThresholdReachedListener;
 
@@ -42,7 +48,7 @@ public class MoviesBrowserViewModel {
                         int last = gridLayoutManager.findLastCompletelyVisibleItemPosition();
                         int total = gridLayoutManager.getItemCount();
                         int columns = gridLayoutManager.getSpanCount();
-                        if (total <= last + columns) {
+                        if (total <= last + columns && !loadingData) {
                             onThresholdReachedListener.onBottomReached();
                         }
                     }
@@ -80,5 +86,15 @@ public class MoviesBrowserViewModel {
 
     void reset() {
         adapter.clear();
+    }
+
+    void setLoadingData(boolean loadingData) {
+        this.loadingData = loadingData;
+        notifyPropertyChanged(BR.progressBarVisibility);
+    }
+
+    @Bindable
+    public int getProgressBarVisibility() {
+        return loadingData ? View.VISIBLE : View.GONE;
     }
 }

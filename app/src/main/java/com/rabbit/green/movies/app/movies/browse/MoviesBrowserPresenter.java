@@ -23,15 +23,17 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                 @Override
                 public void onSuccess(List<Movie> movies) {
                     viewModel.addMovies(movies);
+                    viewModel.setLoadingData(false);
                 }
 
                 @Override
                 public void onError() {
-
+                    viewModel.setLoadingData(false);
                 }
 
                 @Override
                 public List<Movie> call() throws Exception {
+                    viewModel.setLoadingData(true);
                     if (ucParameters.isSortByPopularity()) {
                         return repository.getPopularMovies(parameters.getPage());
                     } else {

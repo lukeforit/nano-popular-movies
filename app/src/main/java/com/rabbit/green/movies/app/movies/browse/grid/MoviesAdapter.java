@@ -52,7 +52,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
         } else {
             this.data.addAll(data);
         }
-        notifyDataSetChanged();
+        notifyItemRangeInserted(this.data.size() - data.size(), data.size());
     }
 
     @Override
@@ -61,6 +61,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
     }
 
     public void clear() {
+        int oldSize = data.size();
         data.clear();
+        notifyItemRangeRemoved(0, oldSize);
     }
 }
