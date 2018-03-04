@@ -24,4 +24,17 @@
         <item name="android:textSize">@dimen/font_size_huge</item>
     </style>
 
+    <style name="ImageView">
+        <item name="android:layout_margin">@dimen/size_x_small</item>
+    </style>
+    <style name="ImageView.Thumbnail">
+        <item name="android:minWidth">@dimen/image_thumbnail_min_width</item>
+        <item name="android:minHeight">@dimen/image_thumbnail_min_height</item>
+        <item name="android:contentDescription">@string/content_desc_thumbnail</item>
+    </style>
+    <style name="ImageView.Poster">
+        <item name="android:minWidth">@dimen/image_poster_min_width</item>
+        <item name="android:minHeight">@dimen/image_poster_min_height</item>
+        <item name="android:contentDescription">@string/content_desc_poster</item>
+    </style>
 </resources>

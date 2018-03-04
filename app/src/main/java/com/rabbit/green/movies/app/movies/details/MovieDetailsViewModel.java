@@ -27,7 +27,7 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     public String getImageUrl() {
         return movie.getFullPosterPath(BuildConfig.BASE_POSTER_URL,
-                contextUtils.getString(R.string.poster_size_w500));
+                contextUtils.getString(R.string.poster_size));
     }
 
     public String getTitle() {

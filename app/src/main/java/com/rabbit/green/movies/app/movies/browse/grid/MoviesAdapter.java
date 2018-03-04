@@ -38,7 +38,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
     @Override
     public void onBindViewHolder(PosterViewHolder holder, int position) {
         holder.bind(data.get(position).getFullPosterPath(BuildConfig.BASE_POSTER_URL,
-                contextUtils.getString(R.string.poster_size_w185)));
+                contextUtils.getString(R.string.thumbnail_size)));
     }
 
     @Override

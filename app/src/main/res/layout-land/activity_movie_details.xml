@@ -22,6 +22,7 @@
             <ImageView
                 android:id="@+id/large_poster_iv"
                 style="@style/ImageView.Poster"
+                android:minWidth="@dimen/image_poster_min_width"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,9 +50,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{vm.releaseDate}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/large_poster_iv"
-                app:layout_constraintTop_toBottomOf="@+id/title_tv"
+                app:layout_constraintEnd_toEndOf="@+id/large_poster_iv"
+                app:layout_constraintStart_toStartOf="@+id/large_poster_iv"
+                app:layout_constraintTop_toBottomOf="@+id/large_poster_iv"
                 tools:text="16/10/2018" />
 
             <TextView
@@ -59,22 +60,23 @@
                 style="@style/TextView.Huge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@{vm.votes}"
-                app:layout_constraintBottom_toBottomOf="@+id/large_poster_iv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/large_poster_iv"
-                app:layout_constraintTop_toBottomOf="@+id/date_tv"
+                app:layout_constraintTop_toBottomOf="@+id/title_tv"
                 tools:text="9.56" />
 
             <TextView
                 android:id="@+id/plot_tv"
                 style="@style/TextView.Medium"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/size_x_small"
                 android:text="@{vm.plot}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/large_poster_iv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/large_poster_iv"
+                app:layout_constraintTop_toBottomOf="@+id/votes_tv"
                 tools:text="Very interesting plot of the very interesting movie." />
 
         </android.support.constraint.ConstraintLayout>
