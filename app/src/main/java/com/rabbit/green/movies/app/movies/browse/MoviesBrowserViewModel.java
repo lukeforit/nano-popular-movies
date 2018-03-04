@@ -30,6 +30,7 @@ public class MoviesBrowserViewModel extends BaseObservable {
     GridLayoutManager gridLayoutManager;
 
     private boolean loadingData;
+    private boolean noDataAvailable;
 
     private OnThresholdReachedListener onThresholdReachedListener;
 
@@ -96,5 +97,15 @@ public class MoviesBrowserViewModel extends BaseObservable {
     @Bindable
     public int getProgressBarVisibility() {
         return loadingData ? View.VISIBLE : View.GONE;
+    }
+
+    void setNoDataAvailable(boolean noDataAvailable) {
+        this.noDataAvailable = noDataAvailable;
+        notifyPropertyChanged(BR.errorIconVisibility);
+    }
+
+    @Bindable
+    public int getErrorIconVisibility() {
+        return noDataAvailable ? View.VISIBLE : View.GONE;
     }
 }

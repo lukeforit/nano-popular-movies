@@ -33,5 +33,13 @@
             android:indeterminateBehavior="repeat"
             android:visibility="@{vm.progressBarVisibility}"/>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_error_outline_black"
+            android:layout_gravity="center"
+            android:contentDescription="@string/content_desc_error_icon"
+            android:visibility="@{vm.errorIconVisibility}"/>
+
     </FrameLayout>
 </layout>

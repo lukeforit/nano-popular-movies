@@ -5,6 +5,7 @@
 
     <string name="content_desc_thumbnail">Movie\'s thumbnail</string>
     <string name="content_desc_poster">Movie\'s poster</string>
+    <string name="content_desc_error_icon">Error icon</string>
 
     <!-- Menu -->
     <string name="action_sort_popularity">Most popular</string>

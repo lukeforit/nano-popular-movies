@@ -24,11 +24,13 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                 public void onSuccess(List<Movie> movies) {
                     viewModel.addMovies(movies);
                     viewModel.setLoadingData(false);
+                    viewModel.setNoDataAvailable(false);
                 }
 
                 @Override
                 public void onError() {
                     viewModel.setLoadingData(false);
+                    viewModel.setNoDataAvailable(true);
                 }
 
                 @Override

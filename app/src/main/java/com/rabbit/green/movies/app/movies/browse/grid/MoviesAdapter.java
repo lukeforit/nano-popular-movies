@@ -61,8 +61,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
     }
 
     public void clear() {
-        int oldSize = data.size();
-        data.clear();
-        notifyItemRangeRemoved(0, oldSize);
+        if (data != null) {
+            int oldSize = data.size();
+            data.clear();
+            notifyItemRangeRemoved(0, oldSize);
+        }
     }
 }
