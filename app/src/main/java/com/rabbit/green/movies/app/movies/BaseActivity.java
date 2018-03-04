@@ -8,9 +8,9 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import javax.inject.Inject;
-
 import com.rabbit.green.movies.app.BR;
+
+import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 

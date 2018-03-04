@@ -33,6 +33,7 @@ public class PosterViewModel extends BaseObservable {
     public static void loadImage(ImageView view, String imageUrl) {
         Picasso.with(view.getContext())
                 .load(imageUrl)
+                //TODO fix picasso resizing placeholder
                 .placeholder(R.drawable.ic_update_black)
                 .error(R.drawable.ic_error_outline_black)
                 .into(view);
