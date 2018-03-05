@@ -52,7 +52,7 @@ dependencies {
         mockitoUnit = '2.13.0'
         okHttpClient = '3.9.1'
         jUnit = '4.12'
-        supportLib = '27.0.2'
+        supportLib = '27.1.0'
         rxJava = '2.1.6'
         rxAndroid = '2.0.1'
         rxRetrofitAdapter = '1.0.0'
