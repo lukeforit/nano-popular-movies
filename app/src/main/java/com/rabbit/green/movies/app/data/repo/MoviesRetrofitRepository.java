@@ -4,6 +4,9 @@ import android.support.annotation.Nullable;
 
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.data.model.MoviesResponse;
+import com.rabbit.green.movies.app.data.model.Review;
+import com.rabbit.green.movies.app.data.model.ReviewsResponse;
+import com.rabbit.green.movies.app.data.model.Video;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,9 +34,34 @@ public class MoviesRetrofitRepository implements IMoviesRepository {
         return unwrapRetrofitCallMoviesResponse(restService.moviePopular(apiKey, page));
     }
 
+    @Override
+    public List<Video> getVideos(int id) {
+        try {
+            Response<List<Video>> response = restService.movieVideos(apiKey, id).execute();
+            return response.isSuccessful() ? response.body() : null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Review> getReviews(int id, int page) {
+        try {
+            //TODO make use of total pages
+            Response<ReviewsResponse> response = restService.movieReviews(apiKey, id, page).execute();
+            ReviewsResponse body = response.body();
+            return response.isSuccessful() && body != null ? body.getResults() : null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Nullable
     private List<Movie> unwrapRetrofitCallMoviesResponse(Call<MoviesResponse> call) {
         try {
+            //TODO make use of total pages
             Response<MoviesResponse> response = call.execute();
             MoviesResponse body = response.body();
             return response.isSuccessful() && body != null ? body.getResults() : null;
