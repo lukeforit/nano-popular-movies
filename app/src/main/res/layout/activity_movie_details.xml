@@ -77,6 +77,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/large_poster_iv"
                 tools:text="Very interesting plot of the very interesting movie." />
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/videos_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:adapter="@{vm.videosAdapter}"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/plot_tv"
+                tools:listitem="@layout/list_item_video" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reviews_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:adapter="@{vm.reviewsAdapter}"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/videos_rv"
+                tools:listitem="@layout/list_item_review" />
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </layout>

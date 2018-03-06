@@ -2,23 +2,20 @@ package com.rabbit.green.movies.app.movies.browse.grid;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.rabbit.green.movies.app.BuildConfig;
 import com.rabbit.green.movies.app.R;
+import com.rabbit.green.movies.app.common.BaseAdapter;
 import com.rabbit.green.movies.app.common.ContextUtils;
 import com.rabbit.green.movies.app.data.model.Movie;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
-public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
+public class MoviesAdapter extends BaseAdapter<PosterViewHolder, Movie>
         implements OnViewHolderClickListener {
-
-    private List<Movie> data;
 
     @SuppressWarnings("WeakerAccess")
     @Inject
@@ -28,43 +25,22 @@ public class MoviesAdapter extends RecyclerView.Adapter<PosterViewHolder>
     MoviesAdapter() {
     }
 
+    @NonNull
     @Override
-    public PosterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PosterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 R.layout.grid_view_poster, parent, false);
         return new PosterViewHolder(binding, this);
     }
 
     @Override
-    public void onBindViewHolder(PosterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PosterViewHolder holder, int position) {
         holder.bind(data.get(position).getFullPosterPath(BuildConfig.BASE_POSTER_URL,
                 contextUtils.getString(R.string.thumbnail_size)));
     }
 
     @Override
-    public int getItemCount() {
-        return data == null ? 0 : data.size();
-    }
-
-    public void addData(List<Movie> data) {
-        if (this.data == null) {
-            this.data = data;
-        } else {
-            this.data.addAll(data);
-        }
-        notifyItemRangeInserted(this.data.size() - data.size(), data.size());
-    }
-
-    @Override
     public void onViewHolderClick(int position) {
         contextUtils.navigateToMovieDetails(data.get(position));
-    }
-
-    public void clear() {
-        if (data != null) {
-            int oldSize = data.size();
-            data.clear();
-            notifyItemRangeRemoved(0, oldSize);
-        }
     }
 }
