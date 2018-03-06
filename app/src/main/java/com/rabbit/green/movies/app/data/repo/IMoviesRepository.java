@@ -9,5 +9,9 @@ public interface IMoviesRepository {
     List<Movie> getTopRatedMovies(int page);
 
     List<Movie> getPopularMovies(int page);
+    
+    List<Video> getVideos(int id);
+
+    List<Review> getReviews(int id, int page);
 
 }
