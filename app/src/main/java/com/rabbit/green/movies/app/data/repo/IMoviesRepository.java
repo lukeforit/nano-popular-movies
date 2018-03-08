@@ -1,6 +1,8 @@
 package com.rabbit.green.movies.app.data.repo;
 
 import com.rabbit.green.movies.app.data.model.Movie;
+import com.rabbit.green.movies.app.data.model.Review;
+import com.rabbit.green.movies.app.data.model.Video;
 
 import java.util.List;
 

@@ -25,12 +25,12 @@ public interface IMoviesRestService {
 
     @GET("3/movie/{id}/videos")
     Call<List<Video>> movieVideos(
-            @Query("api_key") String apiKey,
-            @Path("id") int id);
+            @Path("id") int id,
+            @Query("api_key") String apiKey);
 
     @GET("3/movie/{id}/reviews")
     Call<ReviewsResponse> movieReviews(
-            @Query("api_key") String apiKey,
             @Path("id") int id,
+            @Query("api_key") String apiKey,
             @Query("page") int page);
 }

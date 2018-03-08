@@ -37,7 +37,7 @@ public class MoviesRetrofitRepository implements IMoviesRepository {
     @Override
     public List<Video> getVideos(int id) {
         try {
-            Response<List<Video>> response = restService.movieVideos(apiKey, id).execute();
+            Response<List<Video>> response = restService.movieVideos(id, apiKey).execute();
             return response.isSuccessful() ? response.body() : null;
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,7 +49,7 @@ public class MoviesRetrofitRepository implements IMoviesRepository {
     public List<Review> getReviews(int id, int page) {
         try {
             //TODO make use of total pages
-            Response<ReviewsResponse> response = restService.movieReviews(apiKey, id, page).execute();
+            Response<ReviewsResponse> response = restService.movieReviews(id, apiKey, page).execute();
             ReviewsResponse body = response.body();
             return response.isSuccessful() && body != null ? body.getResults() : null;
         } catch (IOException e) {
