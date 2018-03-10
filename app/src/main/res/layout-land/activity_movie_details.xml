@@ -22,9 +22,9 @@
             <ImageView
                 android:id="@+id/large_poster_iv"
                 style="@style/ImageView.Poster"
-                android:minWidth="@dimen/image_poster_min_width"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="@dimen/image_poster_min_width"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 bind:url="@{vm.imageUrl}"
@@ -79,23 +79,46 @@
                 app:layout_constraintTop_toBottomOf="@+id/votes_tv"
                 tools:text="Very interesting plot of the very interesting movie." />
 
+            <TextView
+                android:id="@+id/header_trailer_tv"
+                style="@style/TextView.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_x_small"
+                android:text="@string/header_trailers"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/plot_tv" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/videos_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 app:adapter="@{vm.videosAdapter}"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/plot_tv"
+                app:layout_constraintTop_toBottomOf="@id/header_trailer_tv"
                 tools:listitem="@layout/list_item_video" />
+
+            <TextView
+                android:id="@+id/header_reviews_tv"
+                style="@style/TextView.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_x_small"
+                android:text="@string/header_reviews"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/videos_rv" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/reviews_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 app:adapter="@{vm.reviewsAdapter}"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/videos_rv"
+                app:layout_constraintTop_toBottomOf="@id/header_reviews_tv"
                 tools:listitem="@layout/list_item_review" />
+
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

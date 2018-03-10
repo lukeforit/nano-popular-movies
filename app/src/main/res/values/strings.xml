@@ -14,4 +14,8 @@
     <!-- TODO handle different sizes: 92, 154, 185, 342, 500, 780 -->
     <string name="thumbnail_size" translatable="false">w342</string>
     <string name="poster_size" translatable="false">w500</string>
+
+    <string name="header_reviews">Reviews:</string>
+    <string name="header_trailers">Trailers:</string>
+
 </resources>

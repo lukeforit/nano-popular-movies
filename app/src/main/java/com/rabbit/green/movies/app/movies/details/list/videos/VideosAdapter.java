@@ -22,7 +22,7 @@ public class VideosAdapter extends BaseAdapter<VideoViewHolder, Video> {
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.grid_view_poster, parent, false);
+                R.layout.list_item_video, parent, false);
         return new VideoViewHolder(binding);
     }
 

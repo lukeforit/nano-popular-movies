@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,13 +10,38 @@
             type="com.rabbit.green.movies.app.movies.details.list.videos.VideoViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_x_small">
 
-        <TextView
+        <ImageView
+            android:id="@+id/play_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{vm.title}" />
+            android:src="@drawable/ic_play_circle_outline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/trailer_tv"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/size_x_small"
+            android:layout_marginStart="@dimen/size_x_small"
+            android:layout_marginTop="8dp"
+            android:text="@{vm.title}"
+            app:layout_constraintBottom_toBottomOf="@+id/play_iv"
+            app:layout_constraintStart_toEndOf="@+id/play_iv"
+            app:layout_constraintTop_toTopOf="@+id/play_iv"
+            tools:text="Trailer" />
+
+        <View
+            style="@style/Underline"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/play_iv" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>
