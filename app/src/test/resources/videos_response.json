@@ -1,0 +1,25 @@
+{
+  "id": 423,
+  "results": [
+    {
+      "id": "53484dfec3a3684b930000bd",
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "key": "u_jE7-6Uv7E",
+      "name": "Trailer",
+      "site": "YouTube",
+      "size": 360,
+      "type": "Trailer"
+    },
+    {
+      "id": "57e16bb0c3a36808bc000641",
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "key": "BFwGqLa_oAo",
+      "name": "Trailer",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Trailer"
+    }
+  ]
+}

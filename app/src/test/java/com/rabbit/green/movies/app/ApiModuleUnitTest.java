@@ -1,6 +1,8 @@
 package com.rabbit.green.movies.app;
 
 import com.rabbit.green.movies.app.data.model.Movie;
+import com.rabbit.green.movies.app.data.model.Review;
+import com.rabbit.green.movies.app.data.model.Video;
 import com.rabbit.green.movies.app.data.repo.IMoviesRepository;
 import com.rabbit.green.movies.app.data.repo.IMoviesRestService;
 import com.rabbit.green.movies.app.di.ApiModule;
@@ -76,5 +78,47 @@ public class ApiModuleUnitTest {
         List<Movie> result = repository.getPopularMovies(1);
         Assert.assertNotNull(result);
         Assert.assertFalse(result.isEmpty());
+    }
+
+    @Test
+    public void moviesVideos_callSuccessful() throws IOException {
+        MockResponse response = new MockResponse();
+        response.setResponseCode(200)
+                .setBody(ResourcesUtils.jsonFileToString("videos_response.json"));
+        mockWebServer.enqueue(response);
+        List<Video> result = repository.getVideos(1);
+        Assert.assertNotNull(result);
+        Assert.assertFalse(result.isEmpty());
+    }
+
+    @Test
+    public void moviesVideos_callUnsuccessful_emptyBody() throws IOException {
+        MockResponse response = new MockResponse();
+        response.setResponseCode(200)
+                .setBody("");
+        mockWebServer.enqueue(response);
+        List<Video> result = repository.getVideos(1);
+        Assert.assertNull(result);
+    }
+
+    @Test
+    public void moviesReviews_callSuccessful() throws IOException {
+        MockResponse response = new MockResponse();
+        response.setResponseCode(200)
+                .setBody(ResourcesUtils.jsonFileToString("reviews_response.json"));
+        mockWebServer.enqueue(response);
+        List<Review> result = repository.getReviews(1, 1);
+        Assert.assertNotNull(result);
+        Assert.assertFalse(result.isEmpty());
+    }
+
+    @Test
+    public void moviesReviews_callUnsuccessful_emptyBody() throws IOException {
+        MockResponse response = new MockResponse();
+        response.setResponseCode(200)
+                .setBody("");
+        mockWebServer.enqueue(response);
+        List<Review> result = repository.getReviews(1, 1);
+        Assert.assertNull(result);
     }
 }

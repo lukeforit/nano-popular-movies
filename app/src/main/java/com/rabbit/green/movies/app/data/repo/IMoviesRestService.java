@@ -3,6 +3,7 @@ package com.rabbit.green.movies.app.data.repo;
 import com.rabbit.green.movies.app.data.model.MoviesResponse;
 import com.rabbit.green.movies.app.data.model.ReviewsResponse;
 import com.rabbit.green.movies.app.data.model.Video;
+import com.rabbit.green.movies.app.data.model.VideosResponse;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public interface IMoviesRestService {
             @Query("page") int page);
 
     @GET("3/movie/{id}/videos")
-    Call<List<Video>> movieVideos(
+    Call<VideosResponse> movieVideos(
             @Path("id") int id,
             @Query("api_key") String apiKey);
 

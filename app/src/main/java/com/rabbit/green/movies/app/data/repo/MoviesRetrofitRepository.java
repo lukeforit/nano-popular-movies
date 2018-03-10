@@ -7,6 +7,7 @@ import com.rabbit.green.movies.app.data.model.MoviesResponse;
 import com.rabbit.green.movies.app.data.model.Review;
 import com.rabbit.green.movies.app.data.model.ReviewsResponse;
 import com.rabbit.green.movies.app.data.model.Video;
+import com.rabbit.green.movies.app.data.model.VideosResponse;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,8 +38,9 @@ public class MoviesRetrofitRepository implements IMoviesRepository {
     @Override
     public List<Video> getVideos(int id) {
         try {
-            Response<List<Video>> response = restService.movieVideos(id, apiKey).execute();
-            return response.isSuccessful() ? response.body() : null;
+            Response<VideosResponse> response = restService.movieVideos(id, apiKey).execute();
+            VideosResponse body = response.body();
+            return response.isSuccessful() && body != null ? body.getResults() : null;
         } catch (IOException e) {
             e.printStackTrace();
         }
