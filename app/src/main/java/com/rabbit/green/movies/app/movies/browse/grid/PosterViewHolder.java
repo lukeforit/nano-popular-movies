@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.rabbit.green.movies.app.BR;
+import com.rabbit.green.movies.app.common.OnViewHolderClickListener;
 
 public class PosterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 

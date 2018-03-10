@@ -10,6 +10,7 @@ import com.rabbit.green.movies.app.BuildConfig;
 import com.rabbit.green.movies.app.R;
 import com.rabbit.green.movies.app.common.BaseAdapter;
 import com.rabbit.green.movies.app.common.ContextUtils;
+import com.rabbit.green.movies.app.common.OnViewHolderClickListener;
 import com.rabbit.green.movies.app.data.model.Movie;
 
 import javax.inject.Inject;
