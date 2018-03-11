@@ -33,6 +33,8 @@ public class Movie {
     @Json(name = "release_date")
     private String releaseDate;
 
+    private transient boolean favourite;
+
     public int getVoteCount() {
         return voteCount;
     }
@@ -155,5 +157,13 @@ public class Movie {
     @SuppressWarnings("SameParameterValue")
     public String getFullPosterPath(String baseUrl, String imageSize) {
         return TextUtils.concat(baseUrl, imageSize, posterPath).toString();
+    }
+
+    public boolean isFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
     }
 }

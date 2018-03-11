@@ -117,6 +117,17 @@
                 app:layout_constraintTop_toBottomOf="@id/header_reviews_tv"
                 tools:listitem="@layout/list_item_review" />
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{vm::onStarClick}"
+                app:layout_constraintEnd_toEndOf="@+id/votes_tv"
+                app:layout_constraintStart_toStartOf="@+id/votes_tv"
+                app:layout_constraintTop_toBottomOf="@+id/votes_tv"
+                bind:src="@{vm.starResId}"
+                tools:src="@drawable/ic_star_border"/>
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </layout>

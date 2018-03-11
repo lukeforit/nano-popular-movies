@@ -1,6 +1,9 @@
 package com.rabbit.green.movies.app.movies.details;
 
 import android.databinding.BaseObservable;
+import android.databinding.BindingAdapter;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.rabbit.green.movies.app.BuildConfig;
 import com.rabbit.green.movies.app.R;
@@ -72,5 +75,18 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     public void addReviews(List<Review> data) {
         reviewsAdapter.addData(data);
+    }
+
+    public int getStarResId() {
+        return movie.isFavourite() ? R.drawable.ic_star : R.drawable.ic_star_border;
+    }
+
+    public void onStarClick(View view) {
+        //TODO pass to presenter
+    }
+
+    @BindingAdapter("bind:src")
+    public static void setImageSrc(ImageView image, int resId) {
+        image.setImageResource(resId);
     }
 }
