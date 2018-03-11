@@ -1,9 +1,11 @@
 package com.rabbit.green.movies.app.di;
 
+import android.content.ContentResolver;
 import android.content.Context;
 
 import com.rabbit.green.movies.app.common.ContextUtils;
 import com.rabbit.green.movies.app.common.MoviesApp;
+import com.rabbit.green.movies.app.data.cache.MoviesCacheManager;
 
 import javax.inject.Singleton;
 
@@ -23,5 +25,11 @@ class AppModule {
     @Singleton
     ContextUtils provideContextUtils(Context context) {
         return new ContextUtils(context);
+    }
+
+    @Provides
+    @Singleton
+    MoviesCacheManager provideMoviesCacheManager(Context context) {
+        return new MoviesCacheManager(context.getContentResolver());
     }
 }
