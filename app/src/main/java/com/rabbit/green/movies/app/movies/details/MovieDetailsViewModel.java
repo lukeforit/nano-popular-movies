@@ -32,6 +32,8 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     private Movie movie;
 
+    private MovieDetailsPresenter presenter;
+
     @Inject
     MovieDetailsViewModel() {
     }
@@ -82,7 +84,12 @@ public class MovieDetailsViewModel extends BaseObservable {
     }
 
     public void onStarClick(View view) {
-        //TODO pass to presenter
+        movie.setFavourite(!movie.isFavourite());
+        presenter.reverseFavourite(movie);
+    }
+
+    public void setPresenter(MovieDetailsPresenter presenter) {
+        this.presenter = presenter;
     }
 
     @BindingAdapter("bind:src")

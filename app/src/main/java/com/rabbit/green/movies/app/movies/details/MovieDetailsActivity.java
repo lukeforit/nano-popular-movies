@@ -18,6 +18,7 @@ public class MovieDetailsActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter.setup();
         Intent intent = getIntent();
         if (intent.hasExtra(BUNDLE_KEY_MOVIE)) {
             presenter.loadData(Parcels.<Movie>unwrap(intent.getParcelableExtra(BUNDLE_KEY_MOVIE)));
