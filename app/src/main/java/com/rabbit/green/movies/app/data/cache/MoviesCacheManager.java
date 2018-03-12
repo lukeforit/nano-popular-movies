@@ -61,7 +61,7 @@ public class MoviesCacheManager {
                         COLUMN_RELEASE_DATE,
                         COLUMN_VOTE_AVERAGE},
                 null, null, null);
-        if (cursor != null) {
+        if (cursor != null && cursor.moveToFirst()) {
             try {
                 return mapCursorToMovie(cursor);
             } finally {

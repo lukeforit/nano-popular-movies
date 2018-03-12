@@ -28,6 +28,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".movies.browse.MoviesBrowserActivity" />
         </activity>
+        
+        <provider
+            android:authorities="com.rabbit.green.movies"
+            android:name=".data.cache.MoviesContentProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>

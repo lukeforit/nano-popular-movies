@@ -15,12 +15,12 @@ public class MoviesContract {
 
     public static final String SQL_CREATE_MOVIE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
             _ID + " PRIMARY KEY, " +
-            COLUMN_TITLE + " TEXT + NOT NULL, " +
-            COLUMN_ORIGINAL_TITLE + " TEXT + NOT NULL, " +
-            COLUMN_VOTE_AVERAGE + " REAL + NOT NULL, " +
-            COLUMN_PLOT + " TEXT + NOT NULL, " +
-            COLUMN_POSTER_PATH + " TEXT + NOT NULL, " +
-            COLUMN_RELEASE_DATE + " TEXT + NOT NULL " +
+            COLUMN_TITLE + " TEXT NOT NULL, " +
+            COLUMN_ORIGINAL_TITLE + " TEXT NOT NULL, " +
+            COLUMN_VOTE_AVERAGE + " REAL NOT NULL, " +
+            COLUMN_PLOT + " TEXT NOT NULL, " +
+            COLUMN_POSTER_PATH + " TEXT NOT NULL, " +
+            COLUMN_RELEASE_DATE + " TEXT NOT NULL " +
             ");";
 
     public static class MovieEntry implements BaseColumns {
