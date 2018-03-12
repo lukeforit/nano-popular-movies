@@ -51,6 +51,26 @@ public class MoviesCacheManager {
         return result;
     }
 
+    public Movie getMovie(int id) {
+        Cursor cursor = resolver.query(ContentUris.withAppendedId(CONTENT_URI, id),
+                new String[]{_ID,
+                        COLUMN_ORIGINAL_TITLE,
+                        COLUMN_TITLE,
+                        COLUMN_PLOT,
+                        COLUMN_POSTER_PATH,
+                        COLUMN_RELEASE_DATE,
+                        COLUMN_VOTE_AVERAGE},
+                null, null, null);
+        if (cursor != null) {
+            try {
+                return mapCursorToMovie(cursor);
+            } finally {
+                cursor.close();
+            }
+        }
+        return null;
+    }
+
     public void insertMovie(Movie movie) {
         resolver.insert(CONTENT_URI, mapMovieToContentValues(movie));
     }
