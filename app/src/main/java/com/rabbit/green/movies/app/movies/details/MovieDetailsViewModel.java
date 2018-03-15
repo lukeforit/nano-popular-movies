@@ -1,10 +1,12 @@
 package com.rabbit.green.movies.app.movies.details;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.rabbit.green.movies.app.BR;
 import com.rabbit.green.movies.app.BuildConfig;
 import com.rabbit.green.movies.app.R;
 import com.rabbit.green.movies.app.common.ContextUtils;
@@ -40,6 +42,7 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+        notifyChange();
     }
 
     public String getImageUrl() {
@@ -79,6 +82,7 @@ public class MovieDetailsViewModel extends BaseObservable {
         reviewsAdapter.addData(data);
     }
 
+    @Bindable
     public int getStarResId() {
         return movie.isFavourite() ? R.drawable.ic_star : R.drawable.ic_star_border;
     }
@@ -86,6 +90,7 @@ public class MovieDetailsViewModel extends BaseObservable {
     public void onStarClick(View view) {
         movie.setFavourite(!movie.isFavourite());
         presenter.reverseFavourite(movie);
+        notifyPropertyChanged(BR.starResId);
     }
 
     public void setPresenter(MovieDetailsPresenter presenter) {
