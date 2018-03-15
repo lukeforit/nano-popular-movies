@@ -1,5 +1,6 @@
 package com.rabbit.green.movies.app.data.model;
 
+@SuppressWarnings("unused")
 public class Review {
     private String id;
     private String author;

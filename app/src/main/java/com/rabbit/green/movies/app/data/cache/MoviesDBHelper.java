@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.TABLE_NAME;
 
-public class MoviesDBHelper extends SQLiteOpenHelper {
+class MoviesDBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "movies_db";
     private static final int DB_VERSION = 1;
 
-    public MoviesDBHelper(Context context) {
+    MoviesDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

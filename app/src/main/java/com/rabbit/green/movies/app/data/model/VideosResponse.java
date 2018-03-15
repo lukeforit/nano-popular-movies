@@ -2,6 +2,7 @@ package com.rabbit.green.movies.app.data.model;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class VideosResponse {
     private int id;
     private List<Video> results;

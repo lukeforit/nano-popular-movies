@@ -20,9 +20,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+@SuppressWarnings("WeakerAccess")
 public class MovieDetailsViewModel extends BaseObservable {
 
-    @SuppressWarnings("WeakerAccess")
     @Inject
     ContextUtils contextUtils;
 
@@ -87,7 +87,7 @@ public class MovieDetailsViewModel extends BaseObservable {
         return movie.isFavourite() ? R.drawable.ic_star : R.drawable.ic_star_border;
     }
 
-    public void onStarClick(View view) {
+    public void onStarClick(@SuppressWarnings("unused") View view) {
         movie.setFavourite(!movie.isFavourite());
         presenter.reverseFavourite(movie);
         notifyPropertyChanged(BR.starResId);

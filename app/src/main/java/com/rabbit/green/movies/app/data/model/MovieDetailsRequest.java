@@ -1,5 +1,6 @@
 package com.rabbit.green.movies.app.data.model;
 
+@SuppressWarnings("unused")
 public class MovieDetailsRequest {
     private int id;
     private int page;
@@ -9,11 +10,6 @@ public class MovieDetailsRequest {
     public MovieDetailsRequest(int id) {
         this.id = id;
         this.page = DEFAULT_PAGE;
-    }
-
-    public MovieDetailsRequest(int id, int page) {
-        this.id = id;
-        this.page = page;
     }
 
     public int getId() {

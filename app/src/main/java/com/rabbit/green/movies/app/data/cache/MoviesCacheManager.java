@@ -22,7 +22,7 @@ import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry._
 
 public class MoviesCacheManager {
 
-    private ContentResolver resolver;
+    private final ContentResolver resolver;
 
     public MoviesCacheManager(ContentResolver resolver) {
         this.resolver = resolver;
@@ -75,6 +75,7 @@ public class MoviesCacheManager {
         resolver.insert(CONTENT_URI, mapMovieToContentValues(movie));
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public int deleteMovie(Movie movie) {
         return resolver.delete(
                 ContentUris.withAppendedId(CONTENT_URI, movie.getId()),

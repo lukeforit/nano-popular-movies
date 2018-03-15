@@ -1,6 +1,5 @@
 package com.rabbit.green.movies.app.di;
 
-import android.content.ContentResolver;
 import android.content.Context;
 
 import com.rabbit.green.movies.app.common.ContextUtils;

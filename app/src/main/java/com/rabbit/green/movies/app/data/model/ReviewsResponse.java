@@ -4,6 +4,7 @@ import com.squareup.moshi.Json;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ReviewsResponse {
     private int id;
     private int page;

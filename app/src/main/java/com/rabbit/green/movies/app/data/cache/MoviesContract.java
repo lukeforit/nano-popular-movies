@@ -9,11 +9,11 @@ public class MoviesContract {
 
     private static final String SCHEME = "content://";
     public static final String AUTHORITY = "com.rabbit.green.movies";
-    public static final String PATH_MOVIE = "movie";
+    static final String PATH_MOVIE = "movie";
 
-    public static final Uri BASE_CONTENT_URI = Uri.parse(SCHEME + AUTHORITY);
+    private static final Uri BASE_CONTENT_URI = Uri.parse(SCHEME + AUTHORITY);
 
-    public static final String SQL_CREATE_MOVIE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
+    static final String SQL_CREATE_MOVIE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
             _ID + " INTEGER PRIMARY KEY, " +
             COLUMN_TITLE + " TEXT NOT NULL, " +
             COLUMN_ORIGINAL_TITLE + " TEXT NOT NULL, " +
@@ -23,18 +23,18 @@ public class MoviesContract {
             COLUMN_RELEASE_DATE + " TEXT NOT NULL " +
             ");";
 
-    public static class MovieEntry implements BaseColumns {
+    static class MovieEntry implements BaseColumns {
 
-        public static final String TABLE_NAME = "movie";
-        public static final String COLUMN_TITLE = "title";
-        public static final String COLUMN_ORIGINAL_TITLE = "originalTitle";
-        public static final String COLUMN_VOTE_AVERAGE = "voteAverage";
-        public static final String COLUMN_POSTER_PATH = "posterPath";
-        public static final String COLUMN_PLOT = "plot";
-        public static final String COLUMN_RELEASE_DATE = "releaseDate";
+        static final String TABLE_NAME = "movie";
+        static final String COLUMN_TITLE = "title";
+        static final String COLUMN_ORIGINAL_TITLE = "originalTitle";
+        static final String COLUMN_VOTE_AVERAGE = "voteAverage";
+        static final String COLUMN_POSTER_PATH = "posterPath";
+        static final String COLUMN_PLOT = "plot";
+        static final String COLUMN_RELEASE_DATE = "releaseDate";
         //TODO store image
 
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+        static final Uri CONTENT_URI = BASE_CONTENT_URI
                 .buildUpon()
                 .appendPath(PATH_MOVIE)
                 .build();

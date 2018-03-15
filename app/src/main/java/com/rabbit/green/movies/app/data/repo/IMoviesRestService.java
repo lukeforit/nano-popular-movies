@@ -2,10 +2,7 @@ package com.rabbit.green.movies.app.data.repo;
 
 import com.rabbit.green.movies.app.data.model.MoviesResponse;
 import com.rabbit.green.movies.app.data.model.ReviewsResponse;
-import com.rabbit.green.movies.app.data.model.Video;
 import com.rabbit.green.movies.app.data.model.VideosResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

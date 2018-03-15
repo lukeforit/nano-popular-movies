@@ -2,6 +2,7 @@ package com.rabbit.green.movies.app.data.model;
 
 import com.squareup.moshi.Json;
 
+@SuppressWarnings("unused")
 public class Video {
     private String id;
     @Json(name = "iso_639_1")

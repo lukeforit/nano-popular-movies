@@ -11,9 +11,9 @@ import com.rabbit.green.movies.app.data.model.Video;
 
 public class VideoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    private VideoViewModel viewModel;
+    private final VideoViewModel viewModel;
 
-    private OnViewHolderClickListener listener;
+    private final OnViewHolderClickListener listener;
 
     VideoViewHolder(@NonNull ViewDataBinding binding, @NonNull OnViewHolderClickListener listener) {
         super(binding.getRoot());

@@ -70,7 +70,9 @@ public class MoviesContentProvider extends ContentProvider {
             default:
                 throw new UnsupportedOperationException("Unsupported URI " + uri);
         }
-        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        if (getContext() != null) {
+            cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        }
         return cursor;
     }
 
@@ -90,6 +92,9 @@ public class MoviesContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        if (values == null) {
+            throw new UnsupportedOperationException("Content values cannot be null");
+        }
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Uri returnUri;
         long id;
@@ -107,7 +112,9 @@ public class MoviesContentProvider extends ContentProvider {
         } else {
             throw new SQLException("Failed insert a row for uri: " + uri);
         }
-        getContext().getContentResolver().notifyChange(uri, null);
+        if (getContext() != null) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
         return returnUri;
     }
 
@@ -129,7 +136,7 @@ public class MoviesContentProvider extends ContentProvider {
             default:
                 throw new UnsupportedOperationException("Unsupported URI " + uri);
         }
-        if (numRows > 0) {
+        if (numRows > 0 && getContext() != null) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return numRows;
@@ -147,7 +154,7 @@ public class MoviesContentProvider extends ContentProvider {
             default:
                 throw new UnsupportedOperationException("Unsupported URI " + uri);
         }
-        if (numRows > 0) {
+        if (numRows > 0 && getContext() != null) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return numRows;

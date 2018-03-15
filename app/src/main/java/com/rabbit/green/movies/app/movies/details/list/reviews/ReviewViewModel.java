@@ -2,6 +2,7 @@ package com.rabbit.green.movies.app.movies.details.list.reviews;
 
 import android.databinding.BaseObservable;
 
+@SuppressWarnings("WeakerAccess")
 public class ReviewViewModel extends BaseObservable {
 
     private String author;

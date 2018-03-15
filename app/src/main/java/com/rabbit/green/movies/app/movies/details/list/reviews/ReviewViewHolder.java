@@ -8,7 +8,7 @@ import com.rabbit.green.movies.app.data.model.Review;
 
 public class ReviewViewHolder extends RecyclerView.ViewHolder {
 
-    private ReviewViewModel viewModel;
+    private final ReviewViewModel viewModel;
 
     ReviewViewHolder(ViewDataBinding binding) {
         super(binding.getRoot());
