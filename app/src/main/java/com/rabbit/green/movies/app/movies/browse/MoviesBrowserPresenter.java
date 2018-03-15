@@ -36,10 +36,14 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                 @Override
                 public List<Movie> call() throws Exception {
                     viewModel.setLoadingData(true);
-                    if (ucParameters.isSortByPopularity()) {
-                        return repository.getPopularMovies(parameters.getPage());
-                    } else {
-                        return repository.getTopRatedMovies(parameters.getPage());
+                    switch (ucParameters.getDisplayPreference()) {
+                        case MoviesRequest.PREF_BY_TOP_RATED:
+                            return repository.getTopRatedMovies(parameters.getPage());
+                        case MoviesRequest.PREF_FAVOURITES:
+                            return cacheManager.getCachedMovies();
+                        case MoviesRequest.PREF_BY_POPULARITY:
+                        default:
+                            return repository.getPopularMovies(parameters.getPage());
                     }
                 }
             };
@@ -67,9 +71,9 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
         browseMoviesUc.execute(ucParameters);
     }
 
-    void sortOrderChanged(boolean byPopularity) {
+    void displayPreferenceChanged(int displayPreference) {
         viewModel.reset();
-        ucParameters.setSortByPopularity(byPopularity);
+        ucParameters.setDisplayPreference(displayPreference);
         ucParameters.resetPage();
         browseMoviesUc.execute(ucParameters);
     }

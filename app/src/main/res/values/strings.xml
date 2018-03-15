@@ -10,6 +10,7 @@
     <!-- Menu -->
     <string name="action_sort_popularity">Most popular</string>
     <string name="action_sort_top_rated">Top rated</string>
+    <string name="action_favourites">Favourites</string>
 
     <!-- TODO handle different sizes: 92, 154, 185, 342, 500, 780 -->
     <string name="thumbnail_size" translatable="false">w342</string>

@@ -53,10 +53,13 @@ public class MoviesBrowserActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_sort_popularity) {
-            presenter.sortOrderChanged(true);
+            presenter.displayPreferenceChanged(MoviesRequest.PREF_BY_POPULARITY);
             return true;
         } else if (item.getItemId() == R.id.action_sort_top_rated) {
-            presenter.sortOrderChanged(false);
+            presenter.displayPreferenceChanged(MoviesRequest.PREF_BY_TOP_RATED);
+            return true;
+        } else if (item.getItemId() == R.id.action_favourites) {
+            presenter.displayPreferenceChanged(MoviesRequest.PREF_FAVOURITES);
             return true;
         } else {
             return super.onOptionsItemSelected(item);

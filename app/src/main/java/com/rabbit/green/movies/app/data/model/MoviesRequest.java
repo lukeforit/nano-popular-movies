@@ -6,19 +6,23 @@ import org.parceler.Parcel;
 @Parcel(Parcel.Serialization.BEAN)
 public class MoviesRequest {
     private int page;
-    private boolean sortByPopularity;
+    private int displayPreference;
+
+    public static final int PREF_BY_POPULARITY = 0;
+    public static final int PREF_BY_TOP_RATED = 1;
+    public static final int PREF_FAVOURITES = 2;
 
     private static final int DEFAULT_PAGE = 1;
-    private static final boolean DEFAULT_SORT = true;
+    private static final int DEFAULT_SORT = PREF_BY_POPULARITY;
 
     public MoviesRequest() {
         this(DEFAULT_PAGE, DEFAULT_SORT);
     }
 
     @SuppressWarnings("SameParameterValue")
-    private MoviesRequest(int page, boolean sortByPopularity) {
+    private MoviesRequest(int page, int displayPreference) {
         this.page = page;
-        this.sortByPopularity = sortByPopularity;
+        this.displayPreference = displayPreference;
     }
 
     public int getPage() {
@@ -29,12 +33,12 @@ public class MoviesRequest {
         this.page = page;
     }
 
-    public boolean isSortByPopularity() {
-        return sortByPopularity;
+    public int getDisplayPreference() {
+        return displayPreference;
     }
 
-    public void setSortByPopularity(boolean sortByPopularity) {
-        this.sortByPopularity = sortByPopularity;
+    public void setDisplayPreference(int displayPreference) {
+        this.displayPreference = displayPreference;
     }
 
     public void resetPage() {

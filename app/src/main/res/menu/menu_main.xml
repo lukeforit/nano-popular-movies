@@ -4,15 +4,18 @@
     tools:context=".movies.browse.MoviesBrowserActivity">
     <item
         android:id="@+id/action_sort_popularity"
-        android:icon="@drawable/ic_trending_up"
         android:orderInCategory="100"
         android:title="@string/action_sort_popularity"
         app:showAsAction="withText" />
     <item
         android:id="@+id/action_sort_top_rated"
-        android:icon="@drawable/ic_star"
         android:orderInCategory="101"
         android:title="@string/action_sort_top_rated"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/action_favourites"
+        android:orderInCategory="101"
+        android:title="@string/action_favourites"
         app:showAsAction="withText" />
 <!-- TODO customize action bar because always|withText doesn't work with appcompat -->
 </menu>
