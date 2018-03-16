@@ -1,20 +1,7 @@
 apply plugin: 'com.android.application'
 
-static def getPropertyByKey(String name) {
-    def propertiesFile = new File('local.properties')
-    if (propertiesFile.exists()) {
-        def properties = new Properties()
-        properties.load(new FileInputStream(propertiesFile))
-        def result = properties.getProperty(name)
-        if (result == null) {
-            throw new MissingResourceException("Property " + name +
-                    " does not exist. See README for details")
-        } else {
-            return "\"" + properties.getProperty(name) + "\""
-        }
-    } else {
-        throw new MissingResourceException("File local.properties does not exist")
-    }
+static def getApiKey() {
+    return "\"" + System.getenv('MOVIE_DB_API_KEY') + "\""
 }
 
 android {
@@ -32,7 +19,7 @@ android {
     dataBinding {
         enabled = true
     }
-    buildTypes {
+    buildTypes {b
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -40,7 +27,7 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField("String", "API_KEY", getPropertyByKey("api_key"))
+        it.buildConfigField("String", "API_KEY", getApiKey())
         it.buildConfigField("String", "BASE_URL", "\"http://api.themoviedb.org/\"")
         it.buildConfigField("String", "BASE_POSTER_URL", "\"http://image.tmdb.org/t/p/\"")
     }
