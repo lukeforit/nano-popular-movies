@@ -10,127 +10,167 @@
             type="com.rabbit.green.movies.app.movies.details.MovieDetailsViewModel" />
     </data>
 
-    <ScrollView
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="RtlHardcoded">
 
-        <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/toolbar_content_ctl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_backdrop_height"
+                app:contentScrim="?colorPrimary"
+                app:expandedTitleMarginBottom="@dimen/size_medium"
+                app:expandedTitleTextAppearance="@style/TextAppearance.Design.CollapsingToolbar.Expanded"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="@{vm.title}">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    bind:url="@{vm.backgroundImageUrl}"
+                    android:tint="#c8ffffff" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/large_poster_iv"
+                        style="@style/ImageView.Poster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        bind:url="@{vm.imageUrl}"
+                        tools:src="@drawable/ic_update_black" />
+
+                    <TextView
+                        android:id="@+id/votes_tv"
+                        style="@style/TextView.Huge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.votes}"
+                        app:layout_constraintBottom_toBottomOf="@+id/large_poster_iv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/large_poster_iv"
+                        app:layout_constraintTop_toTopOf="@+id/large_poster_iv"
+                        tools:text="9.56" />
+
+                    <TextView
+                        android:id="@+id/date_tv"
+                        style="@style/TextView.Medium.Italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{vm.releaseDate}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/large_poster_iv"
+                        app:layout_constraintTop_toBottomOf="@+id/votes_tv"
+                        tools:text="16/10/2018" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@null"
+                    app:layout_collapseMode="pin" />
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scrolled_content_nsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:behavior_overlapTop="@dimen/size_medium"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".movies.details.MovieDetailsActivity">
+
+                <TextView
+                    android:id="@+id/plot_tv"
+                    style="@style/TextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_x_small"
+                    android:text="@{vm.plot}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Very interesting plot of the very interesting movie." />
+
+                <TextView
+                    android:id="@+id/header_trailer_tv"
+                    style="@style/TextView.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_x_small"
+                    android:text="@string/header_trailers"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/plot_tv" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/videos_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:adapter="@{vm.videosAdapter}"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/header_trailer_tv"
+                    tools:listitem="@layout/list_item_video" />
+
+                <TextView
+                    android:id="@+id/header_reviews_tv"
+                    style="@style/TextView.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_x_small"
+                    android:text="@string/header_reviews"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/videos_rv" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/reviews_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:adapter="@{vm.reviewsAdapter}"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/header_reviews_tv"
+                    tools:listitem="@layout/list_item_review" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/favourite_fab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:context=".movies.details.MovieDetailsActivity">
+            android:layout_margin="@dimen/size_small"
+            android:onClick="@{vm::onStarClick}"
+            android:tint="@color/colorPrimaryDark"
+            app:backgroundTint="@android:color/background_light"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="top|right|end"
+            bind:src="@{vm.starResId}"
+            tools:src="@drawable/ic_star_border"
+            tools:ignore="RtlHardcoded" />
 
-            <ImageView
-                android:id="@+id/large_poster_iv"
-                style="@style/ImageView.Poster"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="@dimen/image_poster_min_width"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                bind:url="@{vm.imageUrl}"
-                tools:src="@drawable/ic_update_black" />
-
-            <TextView
-                android:id="@+id/title_tv"
-                style="@style/TextView.Large"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size_x_small"
-                android:gravity="center"
-                android:text="@{vm.title}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/large_poster_iv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_default="wrap"
-                tools:text="Very interesting movie" />
-
-            <TextView
-                android:id="@+id/date_tv"
-                style="@style/TextView.Medium.Italic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{vm.releaseDate}"
-                app:layout_constraintEnd_toEndOf="@+id/large_poster_iv"
-                app:layout_constraintStart_toStartOf="@+id/large_poster_iv"
-                app:layout_constraintTop_toBottomOf="@+id/large_poster_iv"
-                tools:text="16/10/2018" />
-
-            <TextView
-                android:id="@+id/votes_tv"
-                style="@style/TextView.Huge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@{vm.votes}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/large_poster_iv"
-                app:layout_constraintTop_toBottomOf="@+id/title_tv"
-                tools:text="9.56" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{vm::onStarClick}"
-                app:layout_constraintBottom_toBottomOf="@+id/votes_tv"
-                app:layout_constraintStart_toEndOf="@+id/votes_tv"
-                app:layout_constraintTop_toTopOf="@+id/votes_tv"
-                bind:src="@{vm.starResId}"
-                tools:src="@drawable/ic_star_border" />
-
-            <TextView
-                android:id="@+id/plot_tv"
-                style="@style/TextView.Medium"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size_x_small"
-                android:text="@{vm.plot}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/large_poster_iv"
-                app:layout_constraintTop_toBottomOf="@+id/votes_tv"
-                tools:text="Very interesting plot of the very interesting movie." />
-
-            <TextView
-                android:id="@+id/header_trailer_tv"
-                style="@style/TextView.Large"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size_x_small"
-                android:text="@string/header_trailers"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/plot_tv" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/videos_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                app:adapter="@{vm.videosAdapter}"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/header_trailer_tv"
-                tools:listitem="@layout/list_item_video" />
-
-            <TextView
-                android:id="@+id/header_reviews_tv"
-                style="@style/TextView.Large"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size_x_small"
-                android:text="@string/header_reviews"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/videos_rv" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/reviews_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                app:adapter="@{vm.reviewsAdapter}"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/header_reviews_tv"
-                tools:listitem="@layout/list_item_review" />
-
-
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

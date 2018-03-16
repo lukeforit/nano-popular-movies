@@ -1,5 +1,7 @@
 <resources>
     <dimen name="size_x_small">5dp</dimen>
+    <dimen name="size_small">10dp</dimen>
+    <dimen name="size_medium">20dp</dimen>
 
     <dimen name="font_size_medium">16sp</dimen>
     <dimen name="font_size_large">24sp</dimen>
@@ -9,4 +11,5 @@
     <dimen name="image_thumbnail_min_height">171dp</dimen>
     <dimen name="image_poster_min_width">167dp</dimen>
     <dimen name="image_poster_min_height">250dp</dimen>
+    <dimen name="image_backdrop_height">320dp</dimen>
 </resources>

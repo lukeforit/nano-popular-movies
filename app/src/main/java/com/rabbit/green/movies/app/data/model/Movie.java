@@ -159,6 +159,10 @@ public class Movie {
         return TextUtils.concat(baseUrl, imageSize, posterPath).toString();
     }
 
+    public String getFullBackdropPath(String baseUrl, String imageSize) {
+        return TextUtils.concat(baseUrl, imageSize, backdropPath).toString();
+    }
+
     public boolean isFavourite() {
         return favourite;
     }

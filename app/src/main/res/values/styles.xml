@@ -18,7 +18,9 @@
     </style>
 
     <!-- TextView -->
-    <style name="TextView" />
+    <style name="TextView">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
 
     <style name="TextView.Medium">
         <item name="android:textSize">@dimen/font_size_medium</item>

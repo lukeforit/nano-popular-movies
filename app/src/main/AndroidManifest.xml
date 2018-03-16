@@ -23,7 +23,8 @@
         <activity
             android:name=".movies.details.MovieDetailsActivity"
             android:label="@string/title_activity_detail"
-            android:parentActivityName=".movies.browse.MoviesBrowserActivity">
+            android:parentActivityName=".movies.browse.MoviesBrowserActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".movies.browse.MoviesBrowserActivity" />

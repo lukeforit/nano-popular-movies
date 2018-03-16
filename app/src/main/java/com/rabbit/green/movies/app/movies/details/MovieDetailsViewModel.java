@@ -50,6 +50,11 @@ public class MovieDetailsViewModel extends BaseObservable {
                 contextUtils.getString(R.string.poster_size));
     }
 
+    public String getBackgroundImageUrl() {
+        return movie.getFullBackdropPath(BuildConfig.BASE_POSTER_URL,
+                contextUtils.getString(R.string.poster_size));
+    }
+
     public String getTitle() {
         return movie.getOriginalTitle();
     }
