@@ -3,6 +3,8 @@ package com.rabbit.green.movies.app.movies.details;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -85,6 +87,11 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     public void addReviews(List<Review> data) {
         reviewsAdapter.addData(data);
+    }
+
+    public RecyclerView.LayoutManager getLayoutManager() {
+        return new LinearLayoutManager(
+                contextUtils.getContext(), LinearLayoutManager.HORIZONTAL, false);
     }
 
     @Bindable

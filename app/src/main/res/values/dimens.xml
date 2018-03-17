@@ -9,6 +9,8 @@
 
     <dimen name="image_thumbnail_min_width">114dp</dimen>
     <dimen name="image_thumbnail_min_height">171dp</dimen>
+    <dimen name="image_thumbnail_yt_min_width">320dp</dimen>
+    <dimen name="image_thumbnail_yt_min_height">180dp</dimen>
     <dimen name="image_poster_min_width">167dp</dimen>
     <dimen name="image_poster_min_height">250dp</dimen>
     <dimen name="image_backdrop_height">320dp</dimen>

@@ -131,9 +131,15 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
                     app:adapter="@{vm.videosAdapter}"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layoutManager="@{vm.layoutManager}"
                     app:layout_constraintTop_toBottomOf="@id/header_trailer_tv"
                     tools:listitem="@layout/list_item_video" />
+
+                <View
+                    android:id="@+id/underline"
+                    style="@style/Underline"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/videos_rv" />
 
                 <TextView
                     android:id="@+id/header_reviews_tv"
@@ -143,7 +149,7 @@
                     android:layout_margin="@dimen/size_x_small"
                     android:text="@string/header_reviews"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/videos_rv" />
+                    app:layout_constraintTop_toBottomOf="@id/underline" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/reviews_rv"

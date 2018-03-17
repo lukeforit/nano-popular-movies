@@ -25,6 +25,7 @@ public class VideoViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     public void bind(Video video) {
         viewModel.setTitle(video.getName());
+        viewModel.setVideoUrl(video.getYoutubeVideoThumbnail());
     }
 
     @Override

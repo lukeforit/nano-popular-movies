@@ -1,9 +1,15 @@
 package com.rabbit.green.movies.app.data.model;
 
+import android.text.TextUtils;
+
 import com.squareup.moshi.Json;
 
 @SuppressWarnings("unused")
 public class Video {
+
+    private static final String YOUTUBE_IMG_BASE_URL = "http://img.youtube.com/vi/";
+    private static final String YOUTUBE_IMG_EXT = "/mqdefault.jpg";
+
     private String id;
     @Json(name = "iso_639_1")
     private String iso6391;
@@ -88,5 +94,9 @@ public class Video {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getYoutubeVideoThumbnail() {
+        return TextUtils.concat(YOUTUBE_IMG_BASE_URL, key, YOUTUBE_IMG_EXT).toString();
     }
 }
