@@ -20,6 +20,7 @@ public class MoviesContract {
             COLUMN_VOTE_AVERAGE + " REAL NOT NULL, " +
             COLUMN_PLOT + " TEXT NOT NULL, " +
             COLUMN_POSTER_PATH + " TEXT NOT NULL, " +
+            COLUMN_BACKDROP_PATH + " TEXT NOT NULL, " +
             COLUMN_RELEASE_DATE + " TEXT NOT NULL " +
             ");";
 
@@ -30,6 +31,7 @@ public class MoviesContract {
         static final String COLUMN_ORIGINAL_TITLE = "originalTitle";
         static final String COLUMN_VOTE_AVERAGE = "voteAverage";
         static final String COLUMN_POSTER_PATH = "posterPath";
+        static final String COLUMN_BACKDROP_PATH = "backdropPath";
         static final String COLUMN_PLOT = "plot";
         static final String COLUMN_RELEASE_DATE = "releaseDate";
         //TODO store image

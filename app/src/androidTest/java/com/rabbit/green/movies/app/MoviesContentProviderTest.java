@@ -4,7 +4,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ProviderTestCase2;
 
-import com.rabbit.green.movies.app.data.cache.MoviesCacheManager;
+import com.rabbit.green.movies.app.data.cache.MoviesLocalDataStore;
 import com.rabbit.green.movies.app.data.cache.MoviesContentProvider;
 import com.rabbit.green.movies.app.data.cache.MoviesContract;
 import com.rabbit.green.movies.app.data.model.Movie;
@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class MoviesContentProviderTest extends ProviderTestCase2<MoviesContentProvider>{
 
-    private MoviesCacheManager cacheManager;
+    private MoviesLocalDataStore cacheManager;
 
     /**
      * Constructor.
@@ -30,12 +30,12 @@ public class MoviesContentProviderTest extends ProviderTestCase2<MoviesContentPr
     public void setUp() throws Exception {
         setContext(InstrumentationRegistry.getTargetContext());
         super.setUp();
-        cacheManager = new MoviesCacheManager(getMockContentResolver());
+        cacheManager = new MoviesLocalDataStore(getMockContentResolver());
     }
 
     @Test
     public void testInsert() {
-        cacheManager = new MoviesCacheManager(getMockContentResolver());
+        cacheManager = new MoviesLocalDataStore(getMockContentResolver());
         Movie movie = new Movie();
         movie.setId(999);
         movie.setOriginalTitle("Original title");

@@ -11,6 +11,7 @@ import com.rabbit.green.movies.app.data.model.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.COLUMN_BACKDROP_PATH;
 import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.COLUMN_ORIGINAL_TITLE;
 import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.COLUMN_PLOT;
 import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.COLUMN_POSTER_PATH;
@@ -20,11 +21,11 @@ import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.C
 import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.CONTENT_URI;
 import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry._ID;
 
-public class MoviesCacheManager {
+public class MoviesLocalDataStore {
 
     private final ContentResolver resolver;
 
-    public MoviesCacheManager(ContentResolver resolver) {
+    public MoviesLocalDataStore(ContentResolver resolver) {
         this.resolver = resolver;
     }
 
@@ -90,6 +91,7 @@ public class MoviesCacheManager {
         movie.setTitle(cursor.getString(cursor.getColumnIndex(COLUMN_TITLE)));
         movie.setOverview(cursor.getString(cursor.getColumnIndex(COLUMN_PLOT)));
         movie.setPosterPath(cursor.getString(cursor.getColumnIndex(COLUMN_POSTER_PATH)));
+        movie.setBackdropPath(cursor.getString(cursor.getColumnIndex(COLUMN_BACKDROP_PATH)));
         movie.setReleaseDate(cursor.getString(cursor.getColumnIndex(COLUMN_RELEASE_DATE)));
         movie.setVoteAverage(cursor.getInt(cursor.getColumnIndex(COLUMN_VOTE_AVERAGE)));
         return movie;
@@ -102,6 +104,7 @@ public class MoviesCacheManager {
         values.put(COLUMN_TITLE, movie.getTitle());
         values.put(COLUMN_PLOT, movie.getOverview());
         values.put(COLUMN_POSTER_PATH, movie.getPosterPath());
+        values.put(COLUMN_BACKDROP_PATH, movie.getBackdropPath());
         values.put(COLUMN_RELEASE_DATE, movie.getReleaseDate());
         values.put(COLUMN_VOTE_AVERAGE, movie.getVoteAverage());
         return values;

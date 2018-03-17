@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.rabbit.green.movies.app.common.ContextUtils;
 import com.rabbit.green.movies.app.common.MoviesApp;
-import com.rabbit.green.movies.app.data.cache.MoviesCacheManager;
+import com.rabbit.green.movies.app.data.cache.MoviesLocalDataStore;
 
 import javax.inject.Singleton;
 
@@ -28,7 +28,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    MoviesCacheManager provideMoviesCacheManager(Context context) {
-        return new MoviesCacheManager(context.getContentResolver());
+    MoviesLocalDataStore provideMoviesCacheManager(Context context) {
+        return new MoviesLocalDataStore(context.getContentResolver());
     }
 }

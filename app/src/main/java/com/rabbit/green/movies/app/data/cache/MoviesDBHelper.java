@@ -9,7 +9,7 @@ import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.T
 class MoviesDBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "movies_db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     MoviesDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

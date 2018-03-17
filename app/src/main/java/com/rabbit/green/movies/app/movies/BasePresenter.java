@@ -1,6 +1,6 @@
 package com.rabbit.green.movies.app.movies;
 
-import com.rabbit.green.movies.app.data.cache.MoviesCacheManager;
+import com.rabbit.green.movies.app.data.cache.MoviesLocalDataStore;
 import com.rabbit.green.movies.app.data.repo.IMoviesRepository;
 
 import javax.inject.Inject;
@@ -11,7 +11,7 @@ public abstract class BasePresenter<VM> {
     @Inject
     protected IMoviesRepository repository;
     @Inject
-    protected MoviesCacheManager cacheManager;
+    protected MoviesLocalDataStore cacheManager;
 
     VM getViewModel() {
         return viewModel;
