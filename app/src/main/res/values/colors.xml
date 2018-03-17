@@ -5,4 +5,5 @@
     <color name="colorAccent">#be6628</color>
 
     <color name="white_alpha">#c8ffffff</color>
+    <color name="white_alpha_90">#5affffff</color>
 </resources>

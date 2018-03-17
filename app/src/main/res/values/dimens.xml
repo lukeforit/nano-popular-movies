@@ -2,6 +2,7 @@
     <dimen name="size_x_small">5dp</dimen>
     <dimen name="size_small">10dp</dimen>
     <dimen name="size_medium">20dp</dimen>
+    <dimen name="size_large">100dp</dimen>
 
     <dimen name="font_size_medium">16sp</dimen>
     <dimen name="font_size_large">24sp</dimen>
