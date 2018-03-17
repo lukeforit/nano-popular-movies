@@ -36,6 +36,7 @@ public class MoviesLocalDataStore {
                         COLUMN_TITLE,
                         COLUMN_PLOT,
                         COLUMN_POSTER_PATH,
+                        COLUMN_BACKDROP_PATH,
                         COLUMN_RELEASE_DATE,
                         COLUMN_VOTE_AVERAGE},
                 null, null, null);
@@ -59,6 +60,7 @@ public class MoviesLocalDataStore {
                         COLUMN_TITLE,
                         COLUMN_PLOT,
                         COLUMN_POSTER_PATH,
+                        COLUMN_BACKDROP_PATH,
                         COLUMN_RELEASE_DATE,
                         COLUMN_VOTE_AVERAGE},
                 null, null, null);

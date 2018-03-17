@@ -44,6 +44,7 @@ public class MoviesContentProviderTest extends ProviderTestCase2<MoviesContentPr
         movie.setReleaseDate("01-01-2000");
         movie.setVoteAverage(8.88f);
         movie.setOverview("Plot");
+        movie.setBackdropPath("/backdrop_path");
         cacheManager.insertMovie(movie);
         assertFalse(cacheManager.getCachedMovies().isEmpty());
         assertNotNull(cacheManager.getMovie(999));
