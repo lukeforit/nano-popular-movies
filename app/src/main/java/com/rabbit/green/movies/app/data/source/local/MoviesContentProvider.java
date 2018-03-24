@@ -1,4 +1,4 @@
-package com.rabbit.green.movies.app.data.cache;
+package com.rabbit.green.movies.app.data.source.local;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -11,11 +11,6 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import static com.rabbit.green.movies.app.data.cache.MoviesContract.AUTHORITY;
-import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.CONTENT_URI;
-import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.TABLE_NAME;
-import static com.rabbit.green.movies.app.data.cache.MoviesContract.PATH_MOVIE;
 
 public class MoviesContentProvider extends ContentProvider {
 
@@ -31,8 +26,8 @@ public class MoviesContentProvider extends ContentProvider {
 
     private static UriMatcher buildUriMatcher() {
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(AUTHORITY, PATH_MOVIE, MATCH_CODE_MOVIES);
-        uriMatcher.addURI(AUTHORITY, PATH_MOVIE + "/#", MATCH_CODE_MOVIE_WITH_ID);
+        uriMatcher.addURI(MoviesContract.AUTHORITY, MoviesContract.PATH_MOVIE, MATCH_CODE_MOVIES);
+        uriMatcher.addURI(MoviesContract.AUTHORITY, MoviesContract.PATH_MOVIE + "/#", MATCH_CODE_MOVIE_WITH_ID);
         return uriMatcher;
     }
 
@@ -50,7 +45,7 @@ public class MoviesContentProvider extends ContentProvider {
         Cursor cursor;
         switch (URI_MATCHER.match(uri)) {
             case MATCH_CODE_MOVIES:
-                cursor = db.query(TABLE_NAME,
+                cursor = db.query(MoviesContract.MovieEntry.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
@@ -59,7 +54,7 @@ public class MoviesContentProvider extends ContentProvider {
                         sortOrder);
                 break;
             case MATCH_CODE_MOVIE_WITH_ID:
-                cursor = db.query(TABLE_NAME,
+                cursor = db.query(MoviesContract.MovieEntry.TABLE_NAME,
                         projection,
                         BaseColumns._ID + "=?",
                         new String[]{uri.getPathSegments().get(1)},
@@ -81,9 +76,9 @@ public class MoviesContentProvider extends ContentProvider {
     public String getType(@NonNull Uri uri) {
         switch (URI_MATCHER.match(uri)) {
             case MATCH_CODE_MOVIES:
-                return CONTENT_TYPE_DIR + "/" + AUTHORITY + "/" + PATH_MOVIE;
+                return CONTENT_TYPE_DIR + "/" + MoviesContract.AUTHORITY + "/" + MoviesContract.PATH_MOVIE;
             case MATCH_CODE_MOVIE_WITH_ID:
-                return CONTENT_TYPE_ITEM + "/" + AUTHORITY + "/" + PATH_MOVIE;
+                return CONTENT_TYPE_ITEM + "/" + MoviesContract.AUTHORITY + "/" + MoviesContract.PATH_MOVIE;
             default:
                 throw new UnsupportedOperationException("Unsupported URI " + uri);
         }
@@ -102,13 +97,13 @@ public class MoviesContentProvider extends ContentProvider {
             case MATCH_CODE_MOVIE_WITH_ID:
                 values.put(BaseColumns._ID, uri.getPathSegments().get(1));
             case MATCH_CODE_MOVIES:
-                id = db.insert(TABLE_NAME, null, values);
+                id = db.insert(MoviesContract.MovieEntry.TABLE_NAME, null, values);
                 break;
             default:
                 throw new UnsupportedOperationException("Unsupported URI " + uri);
         }
         if (id > 0) {
-            returnUri = ContentUris.withAppendedId(CONTENT_URI, id);
+            returnUri = ContentUris.withAppendedId(MoviesContract.MovieEntry.CONTENT_URI, id);
         } else {
             throw new SQLException("Failed insert a row for uri: " + uri);
         }
@@ -124,12 +119,12 @@ public class MoviesContentProvider extends ContentProvider {
         int numRows;
         switch (URI_MATCHER.match(uri)) {
             case MATCH_CODE_MOVIE_WITH_ID:
-                numRows = db.delete(TABLE_NAME,
+                numRows = db.delete(MoviesContract.MovieEntry.TABLE_NAME,
                         BaseColumns._ID + "=?",
                         new String[]{uri.getPathSegments().get(1)});
                 break;
             case MATCH_CODE_MOVIES:
-                numRows = db.delete(TABLE_NAME,
+                numRows = db.delete(MoviesContract.MovieEntry.TABLE_NAME,
                         selection,
                         selectionArgs);
                 break;
@@ -149,7 +144,7 @@ public class MoviesContentProvider extends ContentProvider {
         int numRows;
         switch (URI_MATCHER.match(uri)) {
             case MATCH_CODE_MOVIES:
-                numRows = db.update(TABLE_NAME, values, selection, selectionArgs);
+                numRows = db.update(MoviesContract.MovieEntry.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unsupported URI " + uri);

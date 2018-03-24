@@ -1,9 +1,9 @@
-package com.rabbit.green.movies.app.data.cache;
+package com.rabbit.green.movies.app.data.source.local;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.*;
+import static com.rabbit.green.movies.app.data.source.local.MoviesContract.MovieEntry.*;
 
 public class MoviesContract {
 
@@ -14,7 +14,7 @@ public class MoviesContract {
     private static final Uri BASE_CONTENT_URI = Uri.parse(SCHEME + AUTHORITY);
 
     static final String SQL_CREATE_MOVIE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
-            _ID + " INTEGER PRIMARY KEY, " +
+            BaseColumns._ID + " INTEGER PRIMARY KEY, " +
             COLUMN_TITLE + " TEXT NOT NULL, " +
             COLUMN_ORIGINAL_TITLE + " TEXT NOT NULL, " +
             COLUMN_VOTE_AVERAGE + " REAL NOT NULL, " +

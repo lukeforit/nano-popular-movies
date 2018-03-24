@@ -1,4 +1,4 @@
-package com.rabbit.green.movies.app.data.repo;
+package com.rabbit.green.movies.app.data.source.net;
 
 import android.support.annotation.Nullable;
 
@@ -8,6 +8,7 @@ import com.rabbit.green.movies.app.data.model.Review;
 import com.rabbit.green.movies.app.data.model.ReviewsResponse;
 import com.rabbit.green.movies.app.data.model.Video;
 import com.rabbit.green.movies.app.data.model.VideosResponse;
+import com.rabbit.green.movies.app.data.source.IMoviesRepository;
 
 import java.io.IOException;
 import java.util.List;

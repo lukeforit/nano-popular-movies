@@ -1,9 +1,9 @@
 package com.rabbit.green.movies.app.di;
 
 import com.rabbit.green.movies.app.BuildConfig;
-import com.rabbit.green.movies.app.data.repo.IMoviesRepository;
-import com.rabbit.green.movies.app.data.repo.IMoviesRestService;
-import com.rabbit.green.movies.app.data.repo.MoviesRetrofitRepository;
+import com.rabbit.green.movies.app.data.source.IMoviesRepository;
+import com.rabbit.green.movies.app.data.source.net.IMoviesRestService;
+import com.rabbit.green.movies.app.data.source.net.MoviesRetrofitRepository;
 
 import javax.inject.Named;
 import javax.inject.Singleton;

@@ -1,4 +1,4 @@
-package com.rabbit.green.movies.app.data.repo;
+package com.rabbit.green.movies.app.data.source;
 
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.data.model.Review;

@@ -1,10 +1,8 @@
-package com.rabbit.green.movies.app.data.cache;
+package com.rabbit.green.movies.app.data.source.local;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import static com.rabbit.green.movies.app.data.cache.MoviesContract.MovieEntry.TABLE_NAME;
 
 class MoviesDBHelper extends SQLiteOpenHelper {
 
@@ -22,7 +20,7 @@ class MoviesDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + MoviesContract.MovieEntry.TABLE_NAME);
         onCreate(db);
     }
 }

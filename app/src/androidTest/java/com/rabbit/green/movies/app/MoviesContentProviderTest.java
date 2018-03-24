@@ -4,9 +4,9 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ProviderTestCase2;
 
-import com.rabbit.green.movies.app.data.cache.MoviesLocalDataStore;
-import com.rabbit.green.movies.app.data.cache.MoviesContentProvider;
-import com.rabbit.green.movies.app.data.cache.MoviesContract;
+import com.rabbit.green.movies.app.data.source.local.MoviesLocalDataStore;
+import com.rabbit.green.movies.app.data.source.local.MoviesContentProvider;
+import com.rabbit.green.movies.app.data.source.local.MoviesContract;
 import com.rabbit.green.movies.app.data.model.Movie;
 
 import org.junit.Before;

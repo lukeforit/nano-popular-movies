@@ -3,8 +3,8 @@ package com.rabbit.green.movies.app;
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.data.model.Review;
 import com.rabbit.green.movies.app.data.model.Video;
-import com.rabbit.green.movies.app.data.repo.IMoviesRepository;
-import com.rabbit.green.movies.app.data.repo.IMoviesRestService;
+import com.rabbit.green.movies.app.data.source.IMoviesRepository;
+import com.rabbit.green.movies.app.data.source.net.IMoviesRestService;
 import com.rabbit.green.movies.app.di.ApiModule;
 
 import org.junit.After;

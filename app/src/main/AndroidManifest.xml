@@ -32,7 +32,7 @@
         
         <provider
             android:authorities="com.rabbit.green.movies"
-            android:name=".data.cache.MoviesContentProvider"
+            android:name=".data.source.local.MoviesContentProvider"
             android:exported="false"/>
     </application>
 
