@@ -90,7 +90,7 @@
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/size_small"
                 android:layout_marginStart="@dimen/size_small"
                 android:layout_marginRight="@dimen/size_small"
@@ -98,9 +98,10 @@
                 android:layout_marginBottom="@dimen/size_small"
                 app:cardCornerRadius="@dimen/size_small">
 
-                <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     tools:context=".movies.details.MovieDetailsActivity">
 
                     <TextView
@@ -110,8 +111,6 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/size_x_small"
                         android:text="@{vm.plot}"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         tools:text="Very interesting plot of the very interesting movie." />
 
                     <TextView
@@ -120,9 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/size_x_small"
-                        android:text="@string/header_trailers"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/plot_tv" />
+                        android:text="@string/header_trailers"/>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/videos_rv"
@@ -131,14 +128,12 @@
                         android:nestedScrollingEnabled="false"
                         app:adapter="@{vm.videosAdapter}"
                         app:layoutManager="@{vm.videosLayoutManager}"
-                        app:layout_constraintTop_toBottomOf="@id/header_trailer_tv"
                         tools:listitem="@layout/list_item_video" />
 
                     <View
                         android:id="@+id/underline"
                         style="@style/Underline"
-                        android:layout_width="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@id/videos_rv" />
+                        android:layout_width="wrap_content" />
 
                     <TextView
                         android:id="@+id/header_reviews_tv"
@@ -146,9 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/size_x_small"
-                        android:text="@string/header_reviews"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/underline" />
+                        android:text="@string/header_reviews" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/reviews_rv"
@@ -157,10 +150,9 @@
                         android:nestedScrollingEnabled="false"
                         app:adapter="@{vm.reviewsAdapter}"
                         app:layoutManager="@{vm.reviewsLayoutManager}"
-                        app:layout_constraintTop_toBottomOf="@id/header_reviews_tv"
                         tools:listitem="@layout/list_item_review" />
 
-                </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
             </android.support.v7.widget.CardView>
         </android.support.v4.widget.NestedScrollView>
 
