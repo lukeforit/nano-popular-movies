@@ -17,6 +17,7 @@ public class MoviesBrowserActivity
         extends BaseActivity<MoviesBrowserPresenter, ActivityMoviesBrowserBinding> {
 
     private static final String BUNDLE_KEY_PARAMS = "BUNDLE_KEY_PARAMS";
+    private static final String BUNDLE_KEY_MOVIES_LM_STATE = "BUNDLE_KEY_MOVIES_LM_STATE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,22 @@ public class MoviesBrowserActivity
                 presenter.restoreData(Parcels.<MoviesRequest>unwrap(parcelable));
             }
         }
-        presenter.loadData();
+        presenter.firstLoad();
+
+        //Execute pending bindings before accessing LayoutManager
+        binding.executePendingBindings();
+        if (savedInstanceState != null) {
+            Parcelable lmParcelable = savedInstanceState.getParcelable(BUNDLE_KEY_MOVIES_LM_STATE);
+            if (lmParcelable != null) {
+                binding.moviesRv.getLayoutManager().onRestoreInstanceState(lmParcelable);
+            }
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        presenter.cacheData();
+        super.onStop();
     }
 
     @Override
@@ -39,6 +55,7 @@ public class MoviesBrowserActivity
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putParcelable(BUNDLE_KEY_PARAMS, presenter.getParcelToSave());
+        outState.putParcelable(BUNDLE_KEY_MOVIES_LM_STATE, binding.moviesRv.getLayoutManager().onSaveInstanceState());
         super.onSaveInstanceState(outState);
     }
 

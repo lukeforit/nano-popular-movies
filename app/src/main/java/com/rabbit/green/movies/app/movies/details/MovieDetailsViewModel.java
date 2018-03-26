@@ -89,9 +89,13 @@ public class MovieDetailsViewModel extends BaseObservable {
         reviewsAdapter.addData(data);
     }
 
-    public RecyclerView.LayoutManager getLayoutManager() {
+    public RecyclerView.LayoutManager getVideosLayoutManager() {
         return new LinearLayoutManager(
                 contextUtils.getContext(), LinearLayoutManager.HORIZONTAL, false);
+    }
+
+    public RecyclerView.LayoutManager getReviewsLayoutManager() {
+        return new LinearLayoutManager(contextUtils.getContext());
     }
 
     @Bindable

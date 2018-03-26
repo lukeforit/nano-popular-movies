@@ -1,5 +1,6 @@
 package com.rabbit.green.movies.app.movies.details;
 
+import com.rabbit.green.movies.app.data.cache.DummyCacheManager;
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.data.model.MovieDetailsRequest;
 import com.rabbit.green.movies.app.data.model.Review;
@@ -13,6 +14,9 @@ import javax.inject.Inject;
 
 @SuppressWarnings("WeakerAccess")
 public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> {
+
+    @Inject
+    DummyCacheManager cacheManager;
 
     private MovieDetailsRequest ucParameters;
 
@@ -52,7 +56,7 @@ public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> 
                 }
             };
 
-    private final UseCase<Movie, MovieDetailsRequest> retrieveCacheUc =
+    private final UseCase<Movie, MovieDetailsRequest> retrieveLocalStoreUc =
             new UseCase<Movie, MovieDetailsRequest>() {
                 @Override
                 public void onSuccess(Movie movie) {
@@ -68,7 +72,7 @@ public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> 
 
                 @Override
                 public Movie call() throws Exception {
-                    return cacheManager.getMovie(parameters.getId());
+                    return localDataStore.getMovie(parameters.getId());
                 }
             };
 
@@ -86,9 +90,9 @@ public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> 
                 @Override
                 public Void call() throws Exception {
                     if (parameters.isFavourite()) {
-                        cacheManager.insertMovie(parameters);
+                        localDataStore.insertMovie(parameters);
                     } else {
-                        cacheManager.deleteMovie(parameters);
+                        localDataStore.deleteMovie(parameters);
                     }
                     return null;
                 }
@@ -105,7 +109,12 @@ public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> 
     void loadData(Movie movie) {
         viewModel.setMovie(movie);
         ucParameters = new MovieDetailsRequest(movie.getId());
-        retrieveCacheUc.execute(ucParameters);
+        if (!cacheManager.isVideosCacheEmpty() && !cacheManager.isReviewsCacheEmpty()) {
+            viewModel.addVideos(cacheManager.getVideosCache());
+            viewModel.addReviews(cacheManager.getReviewsCache());
+        } else {
+            retrieveLocalStoreUc.execute(ucParameters);
+        }
     }
 
     private void loadReviewsAndTrailers() {
@@ -115,5 +124,15 @@ public class MovieDetailsPresenter extends BasePresenter<MovieDetailsViewModel> 
 
     public void reverseFavourite(Movie movie) {
         reverseFavouriteUc.execute(movie);
+    }
+
+    public void cacheData() {
+        cacheManager.cacheVideos(viewModel.getVideosAdapter().getData());
+        cacheManager.cacheReviews(viewModel.getReviewsAdapter().getData());
+    }
+
+    public void invalidateCache() {
+        cacheManager.invalidateVideosCache();
+        cacheManager.invalidateReviewsCache();
     }
 }

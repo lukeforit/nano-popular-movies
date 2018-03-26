@@ -11,7 +11,7 @@ public abstract class BasePresenter<VM> {
     @Inject
     protected IMoviesRepository repository;
     @Inject
-    protected MoviesLocalDataStore cacheManager;
+    protected MoviesLocalDataStore localDataStore;
 
     VM getViewModel() {
         return viewModel;

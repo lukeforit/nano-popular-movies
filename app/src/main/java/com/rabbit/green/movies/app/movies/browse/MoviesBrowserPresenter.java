@@ -2,6 +2,7 @@ package com.rabbit.green.movies.app.movies.browse;
 
 import android.os.Parcelable;
 
+import com.rabbit.green.movies.app.data.cache.DummyCacheManager;
 import com.rabbit.green.movies.app.data.model.Movie;
 import com.rabbit.green.movies.app.data.model.MoviesRequest;
 import com.rabbit.green.movies.app.movies.BasePresenter;
@@ -15,6 +16,9 @@ import javax.inject.Inject;
 
 @SuppressWarnings("WeakerAccess")
 public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel> {
+
+    @Inject
+    DummyCacheManager cacheManager;
 
     private MoviesRequest ucParameters;
 
@@ -40,7 +44,7 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                         case MoviesRequest.PREF_BY_TOP_RATED:
                             return repository.getTopRatedMovies(parameters.getPage());
                         case MoviesRequest.PREF_FAVOURITES:
-                            return cacheManager.getCachedMovies();
+                            return localDataStore.getCachedMovies();
                         case MoviesRequest.PREF_BY_POPULARITY:
                         default:
                             return repository.getPopularMovies(parameters.getPage());
@@ -57,7 +61,6 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
                 }
             };
 
-    //TODO save presenter state in activity
     @Inject
     MoviesBrowserPresenter() {
         ucParameters = new MoviesRequest();
@@ -71,11 +74,20 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
         browseMoviesUc.execute(ucParameters);
     }
 
+    void firstLoad() {
+        if (cacheManager.isMoviesCacheEmpty()) {
+            browseMoviesUc.execute(ucParameters);
+        } else {
+            viewModel.addMovies(cacheManager.getMoviesCache());
+        }
+    }
+
     void displayPreferenceChanged(int displayPreference) {
         viewModel.reset();
         ucParameters.setDisplayPreference(displayPreference);
         ucParameters.resetPage();
         browseMoviesUc.execute(ucParameters);
+        cacheManager.invalidateMoviesCache();
     }
 
     Parcelable getParcelToSave() {
@@ -84,7 +96,9 @@ public class MoviesBrowserPresenter extends BasePresenter<MoviesBrowserViewModel
 
     void restoreData(MoviesRequest data) {
         ucParameters = data;
-        //TODO fine more elegant way to keep current scroll position
-        ucParameters.resetPage();
+    }
+
+    void cacheData() {
+        cacheManager.cacheMovies(viewModel.getData());
     }
 }

@@ -68,6 +68,10 @@ public class MoviesBrowserViewModel extends BaseObservable {
         adapter.addData(movies);
     }
 
+    public List<Movie> getData() {
+        return adapter.getData();
+    }
+
     public GridLayoutManager getLayoutManager() {
         return gridLayoutManager;
     }

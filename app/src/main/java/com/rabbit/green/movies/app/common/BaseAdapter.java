@@ -30,4 +30,8 @@ public abstract class BaseAdapter<VH extends RecyclerView.ViewHolder, D>
             notifyItemRangeRemoved(0, oldSize);
         }
     }
+
+    public List<D> getData() {
+        return data;
+    }
 }
