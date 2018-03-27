@@ -9,9 +9,9 @@ import java.util.List;
 
 public class DummyCacheManager {
 
-    private List<Movie> moviesCache = new ArrayList<>();
-    private List<Video> videosCache = new ArrayList<>();
-    private List<Review> reviewsCache = new ArrayList<>();
+    private final List<Movie> moviesCache = new ArrayList<>();
+    private final List<Video> videosCache = new ArrayList<>();
+    private final List<Review> reviewsCache = new ArrayList<>();
 
     public void cacheMovies(List<Movie> data) {
         moviesCache.clear();

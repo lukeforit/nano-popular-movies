@@ -2,7 +2,6 @@ package com.rabbit.green.movies.app.movies.details;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.rabbit.green.movies.app.R;
@@ -16,8 +15,8 @@ public class MovieDetailsActivity
         extends BaseActivity<MovieDetailsPresenter, ActivityMovieDetailsBinding> {
 
     public static final String BUNDLE_KEY_MOVIE = "BUNDLE_KEY_MOVIE";
-    public static final String BUNDLE_KEY_VIDEOS_ML_STATE = "BUNDLE_KEY_MOVIE";
-    public static final String BUNDLE_KEY_REVIEWS_LM_STATE = "BUNDLE_KEY_MOVIE";
+    private static final String BUNDLE_KEY_VIDEOS_ML_STATE = "BUNDLE_KEY_MOVIE";
+    private static final String BUNDLE_KEY_REVIEWS_LM_STATE = "BUNDLE_KEY_MOVIE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
